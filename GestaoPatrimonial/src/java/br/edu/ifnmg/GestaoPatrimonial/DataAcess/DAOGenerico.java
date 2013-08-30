@@ -26,6 +26,7 @@ public abstract class DAOGenerico<T> implements IRepositorio<T> {
    
 
  
+    @Override
     public boolean Salvar(T obj) {
         try{
             //salva o objeto
@@ -39,8 +40,8 @@ public abstract class DAOGenerico<T> implements IRepositorio<T> {
     
           
     
-    //@Override
-    public T Abrir(long id) {
+    @Override
+    public T Abrir(Long id) {
         try {
             T obj = (T) manager.find(tipo, id);
             return obj;
@@ -51,18 +52,10 @@ public abstract class DAOGenerico<T> implements IRepositorio<T> {
     }
     
     
-      public List<T> Buscar(int inicio, int qtd) {
-        Query consulta = (Query) manager.createQuery("select b from BemPatrimonial b ");
+    @Override
+      public abstract List<T> Buscar(T obj);
 
-        consulta.setFirstResult(inicio);
-        consulta.setMaxResults(qtd);
-
-        List<T> lista = consulta.getResultList();
-
-        return lista;
-    }
-
-   // @Override
+    @Override
     public boolean Apagar(T obj) {
         try {
             manager.remove(manager.merge(obj));

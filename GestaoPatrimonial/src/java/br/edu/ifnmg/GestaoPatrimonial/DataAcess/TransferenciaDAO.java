@@ -22,10 +22,6 @@ public class TransferenciaDAO
         super(Transferencia.class);
     }
 
-    @Override
-    public Transferencia Abrir(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
     @Override
     public List<Transferencia> Buscar(Transferencia obj) {

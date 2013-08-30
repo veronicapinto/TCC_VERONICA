@@ -24,11 +24,6 @@ public class FuncionarioDAO
     }
 
     @Override
-    public Funcionario Abrir(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public List<Funcionario> Buscar(Funcionario obj) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

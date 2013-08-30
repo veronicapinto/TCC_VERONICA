@@ -23,11 +23,6 @@ public class TipoFuncionarioDAO
     }
 
     @Override
-    public TipoFuncionario Abrir(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public List<TipoFuncionario> Buscar(TipoFuncionario obj) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

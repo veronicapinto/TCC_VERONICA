@@ -29,11 +29,6 @@ public class LocalDAO
     }
 
     @Override
-    public Local Abrir(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public List<Local> Buscar(Local obj) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -29,9 +29,5 @@ public class BemPatrimonialDAO
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public BemPatrimonial Abrir(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
 }

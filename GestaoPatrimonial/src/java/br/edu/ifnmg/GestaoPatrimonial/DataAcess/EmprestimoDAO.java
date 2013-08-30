@@ -30,11 +30,6 @@ implements IEmprestimoRepositorio
     }
 
     @Override
-    public Emprestimo Abrir(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public List<Emprestimo> Buscar(Emprestimo obj) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -23,10 +23,6 @@ public class ContaPatrimonialDAO
 
     }
 
-    @Override
-    public ContaPatrimonial Abrir(Long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
     @Override
     public List<ContaPatrimonial> Buscar(ContaPatrimonial obj) {
