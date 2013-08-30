@@ -8,8 +8,8 @@ package br.edu.ifnmg.GestaoPatrimonial.DomainModel;
  *
  * @author veronica
  */
-public enum Unidade {
-    Caixa,
-    Pacote,
-    Unidade    
+public enum MotivoBaixa {
+    Alienacao,
+    BaixaPorRouboOuFurto
+    
 }

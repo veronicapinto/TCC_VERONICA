@@ -28,14 +28,18 @@ public class Emprestimo implements Serializable {
     @ManyToOne
     private Funcionario funcionario;
     @OneToMany
-    private BemPatrimonial bem;    
+    private BemPatrimonial bem;  
+    @ManyToOne 
+    private Local local;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date previsaoDevolucao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date devolucao;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data;
+    private Date dataEmprestimo;
+    
+    //Getts e setts...
     
     public Long getId() {
         return id;
@@ -61,6 +65,14 @@ public class Emprestimo implements Serializable {
         this.bem = bem;
     }
 
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
+    }
+
     public Date getPrevisaoDevolucao() {
         return previsaoDevolucao;
     }
@@ -77,15 +89,16 @@ public class Emprestimo implements Serializable {
         this.devolucao = devolucao;
     }
 
-    public Date getData() {
-        return data;
+    public Date getDataEmprestimo() {
+        return dataEmprestimo;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDataEmprestimo(Date dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
     }
 
-    
+   
+  
     @Override
     public int hashCode() {
         int hash = 0;

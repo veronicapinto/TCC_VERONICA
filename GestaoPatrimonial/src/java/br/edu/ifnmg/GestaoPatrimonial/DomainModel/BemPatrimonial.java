@@ -7,6 +7,8 @@ package br.edu.ifnmg.GestaoPatrimonial.DomainModel;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,23 +28,39 @@ public class BemPatrimonial implements Serializable {
     private Long id;
     
     @ManyToOne
-    private Funcionario funcionario;
+    private Funcionario funcionario;    
     @ManyToOne 
-    private ContaPatrimonial conta;
-    
+    private ContaPatrimonial conta;    
+    @ManyToOne
+    private Local local;
+    @ManyToOne
+    private Funcionario funcionarioBaixa;
+       
     private String descricao;    
     private double valor;    
     private Integer quantidade;
-    private String unidade;
-    private String estadoConservacao;
-    private String tipoAquisicao;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataAquisicao;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data;
-        
+    private String descricaoTipoAq;
+    private String descricaoBaixa;
+    private boolean Ativo;
     
-
+    @Enumerated(EnumType.ORDINAL)
+    private Unidade unidade;    
+    @Enumerated(EnumType.ORDINAL)
+    private TipoAquisicao tipo; 
+    @Enumerated(EnumType.ORDINAL)
+    private EstadoConservacao estadoCons;
+    @Enumerated(EnumType.ORDINAL)
+    private MotivoBaixa motivo;
+          
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataAquisicao;    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data; 
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataBaixa;
+    
+   
+//Getts e Setts...
     public Long getId() {
         return id;
     }
@@ -65,6 +83,22 @@ public class BemPatrimonial implements Serializable {
 
     public void setConta(ContaPatrimonial conta) {
         this.conta = conta;
+    }
+
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
+    }
+
+    public Funcionario getFuncionarioBaixa() {
+        return funcionarioBaixa;
+    }
+
+    public void setFuncionarioBaixa(Funcionario funcionarioBaixa) {
+        this.funcionarioBaixa = funcionarioBaixa;
     }
 
     public String getDescricao() {
@@ -91,31 +125,62 @@ public class BemPatrimonial implements Serializable {
         this.quantidade = quantidade;
     }
 
-    public String getUnidade() {
+    public String getDescricaoTipoAq() {
+        return descricaoTipoAq;
+    }
+
+    public void setDescricaoTipoAq(String descricaoTipoAq) {
+        this.descricaoTipoAq = descricaoTipoAq;
+    }
+
+    public String getDescricaoBaixa() {
+        return descricaoBaixa;
+    }
+
+    public void setDescricaoBaixa(String descricaoBaixa) {
+        this.descricaoBaixa = descricaoBaixa;
+    }
+
+    public boolean isAtivo() {
+        return Ativo;
+    }
+
+    public void setAtivo(boolean Ativo) {
+        this.Ativo = Ativo;
+    }
+
+    public Unidade getUnidade() {
         return unidade;
     }
 
-    public void setUnidade(String unidade) {
+    public void setUnidade(Unidade unidade) {
         this.unidade = unidade;
     }
 
-    public String getEstadoConservacao() {
-        return estadoConservacao;
+    public TipoAquisicao getTipo() {
+        return tipo;
     }
 
-    public void setEstadoConservacao(String estadoConservacao) {
-        this.estadoConservacao = estadoConservacao;
+    public void setTipo(TipoAquisicao tipo) {
+        this.tipo = tipo;
     }
 
-    public String getTipoAquisicao() {
-        return tipoAquisicao;
+    public EstadoConservacao getEstadoCons() {
+        return estadoCons;
     }
 
-    public void setTipoAquisicao(String tipoAquisicao) {
-        this.tipoAquisicao = tipoAquisicao;
+    public void setEstadoCons(EstadoConservacao estadoCons) {
+        this.estadoCons = estadoCons;
     }
-    
-    
+
+    public MotivoBaixa getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(MotivoBaixa motivo) {
+        this.motivo = motivo;
+    }
+
     public Date getDataAquisicao() {
         return dataAquisicao;
     }
@@ -132,8 +197,15 @@ public class BemPatrimonial implements Serializable {
         this.data = data;
     }
 
-        
-    
+    public Date getDataBaixa() {
+        return dataBaixa;
+    }
+
+    public void setDataBaixa(Date dataBaixa) {
+        this.dataBaixa = dataBaixa;
+    }
+
+      
     @Override
     public int hashCode() {
         int hash = 0;

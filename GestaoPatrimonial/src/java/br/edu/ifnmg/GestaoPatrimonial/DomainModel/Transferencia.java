@@ -28,9 +28,10 @@ public class Transferencia implements Serializable {
     @ManyToOne
     private Funcionario funcionario;
     @OneToMany
-    private BemPatrimonial bem;
+    private BemPatrimonial bem;    
+    @ManyToOne
+    private Local local;
     
-    private String localDestino;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data;
     
@@ -59,12 +60,12 @@ public class Transferencia implements Serializable {
         this.bem = bem;
     }
 
-    public String getLocalDestino() {
-        return localDestino;
+    public Local getLocal() {
+        return local;
     }
 
-    public void setLocalDestino(String localDestino) {
-        this.localDestino = localDestino;
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
     public Date getData() {
@@ -75,6 +76,8 @@ public class Transferencia implements Serializable {
         this.data = data;
     }
     
+    
+
 
     @Override
     public int hashCode() {
