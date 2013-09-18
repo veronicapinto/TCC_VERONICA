@@ -44,7 +44,7 @@ implements IEmprestimoRepositorio
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj.getBem() != null) {
-            filtro = " c.bem =: bem";
+            filtro = " e.bem =: bem";
             parametros.put("bem", obj.getBem());
         }
 
@@ -52,7 +52,7 @@ implements IEmprestimoRepositorio
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.dataEmprestimo =: dataEmprestimo";
+            filtro = " e.dataEmprestimo =: dataEmprestimo";
             parametros.put("dataEmprestimo", obj.getDataEmprestimo());
         }
 
@@ -61,7 +61,7 @@ implements IEmprestimoRepositorio
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.devolucao =: devolucao";
+            filtro = " e.devolucao =: devolucao";
             parametros.put("devolucao", obj.getDevolucao());
         }
 
@@ -69,7 +69,7 @@ implements IEmprestimoRepositorio
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.funcionario =: funcionario";
+            filtro = " e.funcionario =: funcionario";
             parametros.put("funcionario", obj.getFuncionario());
         }
 
@@ -77,7 +77,7 @@ implements IEmprestimoRepositorio
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.id =: id";
+            filtro = " e.id =: id";
             parametros.put("id", obj.getId());
         }
 
@@ -85,7 +85,7 @@ implements IEmprestimoRepositorio
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.local =: local";
+            filtro = " e.local =: local";
             parametros.put("local", obj.getLocal());
         }
 
@@ -93,7 +93,7 @@ implements IEmprestimoRepositorio
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.previsaoDevolucao=: previsaoDevolucao";
+            filtro = " e.previsaoDevolucao=: previsaoDevolucao";
             parametros.put("previsaoDevolucao", obj.getPrevisaoDevolucao());
         }
 

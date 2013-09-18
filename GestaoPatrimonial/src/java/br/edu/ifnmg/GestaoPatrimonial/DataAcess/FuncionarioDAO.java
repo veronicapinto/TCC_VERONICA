@@ -2,9 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.GestaoPatrimonial.DomainModel;
+package br.edu.ifnmg.GestaoPatrimonial.DataAcess;
 
 import br.edu.ifnmg.GestaoPatrimonial.DataAcess.DAOGenerico;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Funcionario;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IFuncionarioRepositorio;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -38,7 +40,7 @@ public class FuncionarioDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj.getId() != null) {
-            filtro = " c.id =: id";
+            filtro = " f.id =: id";
             parametros.put("id", obj.getId());
         }
 
@@ -46,7 +48,7 @@ public class FuncionarioDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.login =: login";
+            filtro = " f.login =: login";
             parametros.put("login", obj.getLogin());
         }
 
@@ -54,14 +56,14 @@ public class FuncionarioDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.nome =: nome";
+            filtro = " f.nome =: nome";
             parametros.put("nome", obj.getNome());
         }
         if (obj.getSenha() != null) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.senha =: senha";
+            filtro = " f.senha =: senha";
             parametros.put("senha", obj.getSenha());
         }
 
@@ -69,7 +71,7 @@ public class FuncionarioDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.tipo =: tipo";
+            filtro = " f.tipo =: tipo";
             parametros.put("tipo", obj.getTipo());
         }
         // Se houver filtros, coloca o "where" na consulta

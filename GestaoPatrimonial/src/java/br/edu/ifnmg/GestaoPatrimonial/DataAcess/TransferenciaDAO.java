@@ -37,7 +37,7 @@ public class TransferenciaDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj.getBem() != null) {
-            filtro = " c.bem =: bem";
+            filtro = " t.bem =: bem";
             parametros.put("bem", obj.getBem());
         }
 
@@ -45,7 +45,7 @@ public class TransferenciaDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.data =: data";
+            filtro = " t.data =: data";
             parametros.put("data", obj.getData());
         }
 
@@ -53,7 +53,7 @@ public class TransferenciaDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.funcionario =: funcionario";
+            filtro = " t.funcionario =: funcionario";
             parametros.put("funcionario", obj.getFuncionario());
         }
 
@@ -62,7 +62,7 @@ public class TransferenciaDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.id =: id";
+            filtro = " t.id =: id";
             parametros.put("id", obj.getId());
         }
 
@@ -70,7 +70,7 @@ public class TransferenciaDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.local =: local";
+            filtro = " t.local =: local";
             parametros.put("local", obj.getLocal());
         }
 

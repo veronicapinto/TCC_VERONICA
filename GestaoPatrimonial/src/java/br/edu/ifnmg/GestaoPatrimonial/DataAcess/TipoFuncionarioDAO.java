@@ -37,7 +37,7 @@ public class TipoFuncionarioDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj.getDescricao() != null) {
-            filtro = " c.descricao =: descricao";
+            filtro = " tf.descricao =: descricao";
             parametros.put("descricao", obj.getDescricao());
         }
 
@@ -45,7 +45,7 @@ public class TipoFuncionarioDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.id =: id";
+            filtro = " tf.id =: id";
             parametros.put("id", obj.getId());
         }
 

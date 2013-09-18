@@ -40,7 +40,7 @@ public class BemPatrimonialDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj.getConta() != null) {
-            filtro = " c.conta =: conta";
+            filtro = " b.conta =: conta";
             parametros.put("conta", obj.getConta());
         }
 
@@ -48,7 +48,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.data =: data";
+            filtro = " b.data =: data";
             parametros.put("data", obj.getData());
         }
 
@@ -56,7 +56,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.dataAquisicao =: dataAquisicao";
+            filtro = " b.dataAquisicao =: dataAquisicao";
             parametros.put("dataAquisicao", obj.getDataAquisicao());
         }
 
@@ -64,7 +64,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.dataBaixa =: dataBaixa";
+            filtro = " b.dataBaixa =: dataBaixa";
             parametros.put("dataBaixa", obj.getDataBaixa());
 
         }
@@ -72,7 +72,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.descricao =: descricao";
+            filtro = " b.descricao =: descricao";
             parametros.put("descricao", obj.getDescricao());
         }
 
@@ -80,7 +80,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.descricaoBaixa =: descricaoBaixa";
+            filtro = " b.descricaoBaixa =: descricaoBaixa";
             parametros.put("descricaoBaixa", obj.getDescricaoBaixa());
         }
 
@@ -88,7 +88,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.descricaoTipoAq =: descricaoTipoAq";
+            filtro = " b.descricaoTipoAq =: descricaoTipoAq";
             parametros.put("descricaoTipoAq", obj.getDescricaoTipoAq());
         }
 
@@ -97,7 +97,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.estadoCons =: estadoCons";
+            filtro = " b.estadoCons =: estadoCons";
             parametros.put("estadoCons", obj.getEstadoCons());
         }
 
@@ -105,7 +105,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.funcionario =: funcionario";
+            filtro = " b.funcionario =: funcionario";
             parametros.put("funcionario", obj.getFuncionario());
         }
 
@@ -113,7 +113,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.funcionarioBaixa =: funcionarioBaixa";
+            filtro = " b.funcionarioBaixa =: funcionarioBaixa";
             parametros.put("funcionarioBaixa", obj.getFuncionarioBaixa());
         }
 
@@ -122,7 +122,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.id =: id";
+            filtro = " b.id =: id";
             parametros.put("id", obj.getId());
         }
 
@@ -130,7 +130,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.local =: local";
+            filtro = " b.local =: local";
             parametros.put("local", obj.getLocal());
         }
 
@@ -138,7 +138,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.motivo =: motivo";
+            filtro = " b.motivo =: motivo";
             parametros.put("motivo", obj.getMotivo());
         }
 
@@ -146,14 +146,14 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.quantidade =: quantidade";
+            filtro = " b.quantidade =: quantidade";
             parametros.put("quantidade", obj.getQuantidade());
         }
         if (obj.getTipo() != null) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.tipo =: tipo";
+            filtro = " b.tipo =: tipo";
             parametros.put("tipo", obj.getTipo());
         }
 
@@ -161,14 +161,14 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.unidade =: unidade";
+            filtro = " b.unidade =: unidade";
             parametros.put("unidade", obj.getUnidade());
         }
         if (obj.getValor() != 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.valor =: valor";
+            filtro = " b.valor =: valor";
             parametros.put("valor", obj.getValor());
         }
 

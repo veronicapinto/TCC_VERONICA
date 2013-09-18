@@ -27,8 +27,10 @@ public class Emprestimo implements Serializable {
     
     @ManyToOne
     private Funcionario funcionario;
-    @OneToMany
+    
+    @ManyToOne
     private BemPatrimonial bem;  
+    
     @ManyToOne 
     private Local local;
     

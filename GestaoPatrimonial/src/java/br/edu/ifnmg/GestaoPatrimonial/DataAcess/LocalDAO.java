@@ -41,7 +41,7 @@ public class LocalDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj.getCidade() != null) {
-            filtro = " c.cidade =: cidade";
+            filtro = " l.cidade =: cidade";
             parametros.put("cidade", obj.getCidade());
         }
 
@@ -49,28 +49,28 @@ public class LocalDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.descricao =: descricao";
+            filtro = " l.descricao =: descricao";
             parametros.put("descricao", obj.getDescricao());
         }
         if (obj.getEndereco() != null) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.endereco =: endereco";
+            filtro = " l.endereco =: endereco";
             parametros.put("endereco", obj.getEndereco());
         }
         if (obj.getEstado() != null) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.estado =: estado";
+            filtro = " l.estado =: estado";
             parametros.put("estado", obj.getEstado());
         }
         if (obj.getId() != null) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.id =: id";
+            filtro = " l.id =: id";
             parametros.put("id", obj.getId());
         }
 
