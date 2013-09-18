@@ -16,7 +16,9 @@
                     <h:outputLabel value="Descrição:" />
                     <p:inputText value="${contaPatrimonialController.entidade.descricao}" />
                 </h:panelGrid>
-                <p:commandButton value="Salvar" action="${contaPatrimonialController.salvar()}" />
+                <p:commandButton value="Salvar" ajax="false" action="${contaPatrimonialController.salvar()}" />
+                <p:commandButton value="Remover" ajax="false" action="${contaPatrimonialController.apagar()}" />
+                <p:commandButton value="Voltar para listagem" ajax="false" action="${contaPatrimonialController.voltar()}" />
             </ui:define>
 
         </ui:composition>

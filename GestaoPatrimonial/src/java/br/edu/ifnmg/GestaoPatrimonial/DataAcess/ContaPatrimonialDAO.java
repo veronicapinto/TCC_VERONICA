@@ -38,22 +38,22 @@ public class ContaPatrimonialDAO
 
         //verifica campo por campo os valores que serão filtrados
         if (obj.getConta() != null) {
-            filtro = "c.conta=:conta";
+            filtro += " c.conta=:conta ";
             parametros.put("conta", obj.getConta());
         }
-        if (obj.getDescricao() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + "and";
-            }
-            filtro = "c.descricao=: descricao";
-            parametros.put("descricao", obj.getDescricao());
-
-        }
-        if (obj.getId() != null) {
+        if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.id =: id";
+            filtro += "c.descricao=:descricao";
+            parametros.put("descricao", obj.getDescricao());
+
+        }
+        if (obj.getId() != null && obj.getId() > 0) {
+            if (filtro.length() > 0) {
+                filtro = filtro + " and ";
+            }
+            filtro = " c.id =: id ";
             parametros.put("id", obj.getId());
         }
         // Se houver filtros, coloca o "where" na consulta

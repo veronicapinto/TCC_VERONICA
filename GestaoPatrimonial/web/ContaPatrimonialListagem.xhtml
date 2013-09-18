@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./TemplateGeral.xhtml">
+
+            <ui:define name="content">
+                <p:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Filtros  
+                    </f:facet>  
+                    
+                    <h:outputLabel value="Conta:" />
+                    <p:inputText value="${contaPatrimonialController.filtro.conta}" />  
+                    
+                    <h:outputLabel value="Descrição:" />
+                    <p:inputText value="${contaPatrimonialController.filtro.descricao}" />  
+
+                    <f:facet name="footer">  
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${contaPatrimonialController.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Nova Conta" action="${contaPatrimonialController.criar()}" />
+                    </f:facet>  
+                </p:panelGrid>
+                
+                <p:dataTable value="${contaPatrimonialController.listagem}" var="item">
+                    <p:column sortBy="conta" headerText="Conta">
+                        ${item.conta}
+                    </p:column>
+                    <p:column sortBy="descricao" headerText="Descrição">
+                        ${item.descricao}
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${contaPatrimonialController.editar()}">
+                            <f:setPropertyActionListener target="${contaPatrimonialController.entidade}" value="${item}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
