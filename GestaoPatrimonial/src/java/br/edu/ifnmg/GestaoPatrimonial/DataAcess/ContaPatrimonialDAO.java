@@ -65,6 +65,7 @@ public class ContaPatrimonialDAO
         Query query = manager.createQuery(consulta);
 
         // Aplica os parâmetros da consulta
+        
         for (String par : parametros.keySet()) {
             query.setParameter(par, parametros.get(par));
         }

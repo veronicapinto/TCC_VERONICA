@@ -40,8 +40,16 @@ public class BemPatrimonialDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj.getConta() != null) {
-            filtro = " b.conta =: conta";
+            filtro += " b.conta =: conta";
             parametros.put("conta", obj.getConta());
+        }
+        
+         if (obj.getDescricao() != null && obj.getDescricao().length()>0) {
+            if (filtro.length() > 0) {
+                filtro = filtro + " and ";
+            }
+            filtro += " b.descricao =: descricao";
+            parametros.put("descricao", obj.getDescricao());
         }
 
         if (obj.getData() != null) {
@@ -68,13 +76,7 @@ public class BemPatrimonialDAO
             parametros.put("dataBaixa", obj.getDataBaixa());
 
         }
-        if (obj.getDescricao() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " b.descricao =: descricao";
-            parametros.put("descricao", obj.getDescricao());
-        }
+       
 
         if (obj.getDescricaoBaixa() != null) {
             if (filtro.length() > 0) {

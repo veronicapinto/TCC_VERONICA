@@ -16,7 +16,7 @@
                         Filtros  
                     </f:facet>  
                     
-                    <h:outputLabel value="Conta:" />
+                    <h:outputLabel value="Número:" />
                     <p:inputText value="${contaPatrimonialController.filtro.conta}" />  
                     
                     <h:outputLabel value="Descrição:" />
@@ -27,12 +27,11 @@
                         <p:commandButton ajax="false" value="Nova Conta" action="${contaPatrimonialController.criar()}" />
                     </f:facet>  
                 </p:panelGrid>
-                
                 <p:dataTable value="${contaPatrimonialController.listagem}" var="item">
                     <p:column sortBy="conta" headerText="Conta">
                         ${item.conta}
                     </p:column>
-                    <p:column sortBy="descricao" headerText="Descrição">
+                    <p:column sortBy="descricao" headerText="Descrição: ">
                         ${item.descricao}
                     </p:column>
                     <p:column headerText="Editar">
@@ -42,9 +41,7 @@
                     </p:column>
                 </p:dataTable>
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>
 

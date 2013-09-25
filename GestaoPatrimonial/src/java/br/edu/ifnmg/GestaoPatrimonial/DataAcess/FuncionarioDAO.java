@@ -39,31 +39,33 @@ public class FuncionarioDAO
         HashMap<String, Object> parametros = new HashMap<String, Object>();
 
         // Verifica campo por campo os valores que serão filtrados
-        if (obj.getId() != null) {
-            filtro = " f.id =: id";
-            parametros.put("id", obj.getId());
+
+        if (obj.getNome() != null) {
+            filtro += " f.nome =: nome";
+            parametros.put("nome", obj.getNome());
         }
 
-        if (obj.getLogin() != null) {
+        if (obj.getLogin() != null && obj.getLogin().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " f.login =: login";
+            filtro += " f.login =: login";
             parametros.put("login", obj.getLogin());
         }
 
-        if (obj.getNome() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
+        if (obj.getId() != null && obj.getId() > 0) {
+            if(filtro.length() > 0) {
+                filtro=filtro + "and";
             }
-            filtro = " f.nome =: nome";
-            parametros.put("nome", obj.getNome());
+            filtro += " f.id =: id";
+            parametros.put("id", obj.getId());
         }
-        if (obj.getSenha() != null) {
+
+        if (obj.getSenha() != null && obj.getSenha().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " f.senha =: senha";
+            filtro += " f.senha =: senha";
             parametros.put("senha", obj.getSenha());
         }
 
@@ -71,7 +73,7 @@ public class FuncionarioDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " f.tipo =: tipo";
+            filtro += " f.tipo =: tipo";
             parametros.put("tipo", obj.getTipo());
         }
         // Se houver filtros, coloca o "where" na consulta

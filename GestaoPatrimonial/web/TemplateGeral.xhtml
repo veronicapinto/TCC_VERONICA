@@ -21,15 +21,15 @@
         </div>
         </div>
         <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" />   
             <p:menubar>
                  <p:menuitem value="Login" icon="ui-icon-key" />  
                 <p:submenu label="Cadastros" icon="ui-icon-pencil">  
                     <p:menuitem value="Bens" url="BemListagem.xhtml"  />  
                     <p:menuitem value="Conta Patrimonial" url="ContaPatrimonialListagem.xhtml" />                    
-                    <p:menuitem value="Funcionário" url="#"  />  
-                    <p:menuitem value="Local do Bem" url="#" />
-                    <p:menuitem value="Tipo de Funcionário" url="#"  />  
-                    <p:menuitem value="Unidade" url="#" />
+                    <p:menuitem value="Funcionário" url="FuncionarioListagem.xhtml"  />  
+                    <p:menuitem value="Local do Bem" url="LocalListagem.xhtml" />
+                    <p:menuitem value="Tipo de Funcionário" url="TipoFuncionarioListagem.xhtml"  />  
                 </p:submenu> 
                 <p:submenu label="Movimentações" icon="ui-icon-pencil"> 
                     <p:menuitem value="Empréstimos" url="#" />

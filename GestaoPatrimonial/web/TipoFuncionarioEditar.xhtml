@@ -4,20 +4,17 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-
+          
     <body>
         
         <ui:composition template="./TemplateGeral.xhtml">
             
             <ui:define name="content">
-                
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Número*:" />
-                    <p:inputText label="Número" value="${contaPatrimonialController.entidade.conta}">
-                    </p:inputText>
                     <h:outputLabel value="Descrição*:" />
-                    <p:inputText  label="Descrição" value="${contaPatrimonialController.entidade.descricao}"
-                                 validator="#{contaPatrimonialController.validarEspacoBranco}" />
+                    <p:inputText  value="${tipoFuncionarioController.entidade.descricao}" required="true" label="Descrição"
+                                  validator= "#{tipoFuncionarioController.validarEspacoBranco}" >
+                    </p:inputText>
                         
                 </h:panelGrid>
                 <br/>
@@ -26,23 +23,25 @@
                 <p:panel>
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                     <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-                    <p:commandButton value="Voltar para listagem" ajax="false" action="${contaPatrimonialController.voltar()}" />
-                </p:panel>        
+                    <p:commandButton value="Voltar para listagem" ajax="false" action="${tipoFuncionarioController.voltar()}"/>
+                </p:panel>
                 <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgSalvar">
-                    <p:commandButton ajax="false" value="SIM" action="${contaPatrimonialController.salvar()}" />
+                    <p:commandButton ajax="false" value="SIM" action="${tipoFuncionarioController.salvar()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
                 </p:confirmDialog>
 
                 <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgRemover">
-                    <p:commandButton ajax="false" value="SIM" action="${contaPatrimonialController.apagar()}" />
+                    <p:commandButton ajax="false" value="SIM" action="${tipoFuncionarioController.apagar()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
 
-                </p:confirmDialog>                
+                </p:confirmDialog>     
+                    
+                    
             </ui:define>
+
         </ui:composition>
-            
+
     </body>
 </html>
-    

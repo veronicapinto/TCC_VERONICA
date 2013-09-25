@@ -40,38 +40,43 @@ public class LocalDAO
         HashMap<String, Object> parametros = new HashMap<String, Object>();
 
         // Verifica campo por campo os valores que serão filtrados
-        if (obj.getCidade() != null) {
-            filtro = " l.cidade =: cidade";
+
+        if (obj.getDescricao() != null) {
+            filtro += "l.descricao=:descricao";
+            parametros.put("descricao", obj.getDescricao());
+        }
+
+        if (obj.getCidade() != null && obj.getCidade().length() > 0) {
+            if (filtro.length() > 0) {
+                filtro = filtro + "and";
+            }
+            filtro += "l.cidade=:cidade";
             parametros.put("cidade", obj.getCidade());
         }
 
-        if (obj.getDescricao() != null) {
+        if (obj.getId() != null && obj.getId() > 0) {
             if (filtro.length() > 0) {
-                filtro = filtro + " and ";
+                filtro = filtro + "and";
             }
-            filtro = " l.descricao =: descricao";
-            parametros.put("descricao", obj.getDescricao());
+            filtro += "l.id=:id";
+            parametros.put("id", obj.getId());
         }
-        if (obj.getEndereco() != null) {
+
+
+
+        if (obj.getEndereco() != null && obj.getEndereco().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " l.endereco =: endereco";
+            filtro += " l.endereco =: endereco";
             parametros.put("endereco", obj.getEndereco());
         }
-        if (obj.getEstado() != null) {
+        if (obj.getEstado() != null && obj.getEstado().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " l.estado =: estado";
+            filtro += " l.estado =: estado";
             parametros.put("estado", obj.getEstado());
-        }
-        if (obj.getId() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " l.id =: id";
-            parametros.put("id", obj.getId());
         }
 
         // Se houver filtros, coloca o "where" na consulta

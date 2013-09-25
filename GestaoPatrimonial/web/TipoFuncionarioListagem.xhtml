@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./TemplateGeral.xhtml">
+
+            <ui:define name="content">
+                <p:panelGrid columns="2">
+                    <f:facet name="header">
+                        Filtros
+                    </f:facet>                    
+                    <h:outputLabel value="Descrição:"/>
+                    <p:inputText value="${tipoFuncionarioController.filtro.descricao}"/>
+                    
+                    <f:facet name="footer">
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${tipoFuncionarioController.filtrar()}" style="margin: 0"/>
+                        <p:commandButton ajax="false" value="Novo Tipo Funcionário" action="${tipoFuncionarioController.criar()}"/>
+                    </f:facet>
+                </p:panelGrid>
+                <p:dataTable value="${tipoFuncionarioController.listagem}" var="item">
+                    <p:column sortBy="descricao" headerText="Descrição">
+                        ${item.descricao}
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${tipoFuncionarioController.editar()}">
+                            <f:setPropertyActionListener target="${tipoFuncionarioController.entidade}" value="${item}"/>
+                        </p:commandButton> 
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

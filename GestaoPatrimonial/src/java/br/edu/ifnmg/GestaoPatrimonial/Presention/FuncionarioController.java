@@ -5,12 +5,14 @@
 package br.edu.ifnmg.GestaoPatrimonial.Presention;
 
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ContaPatrimonial;
-import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IContaPatrimonialRepositorio;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Funcionario;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IFuncionarioRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.inject.Named;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
@@ -20,25 +22,22 @@ import javax.faces.context.FacesContext;
  *
  * @author veronica
  */
-@Named(value = "contaPatrimonialController")
+@Named(value = "funcionarioController")
 @SessionScoped
-public class ContaPatrimonialController implements Serializable {
+public class FuncionarioController implements Serializable {
 
-   
-    ContaPatrimonial entidade;
-    
-    ContaPatrimonial filtro;
-    
-    List<ContaPatrimonial> listagem;
+    Funcionario entidade;
+    Funcionario filtro;
+    List<Funcionario> listagem;
     @EJB
-    IContaPatrimonialRepositorio dao;
+    IFuncionarioRepositorio dao;
 
     /**
-     * Creates a new instance of ContaPatrimonialController
+     * Creates a new instance of FuncionarioController
      */
-    public ContaPatrimonialController() {
-        entidade = new ContaPatrimonial();
-        filtro = new ContaPatrimonial();
+    public FuncionarioController() {
+        entidade = new Funcionario();
+        filtro = new Funcionario();
     }
 
     public void validarEspacoBranco(FacesContext contexto, UIComponent componente, Object valor) {
@@ -46,7 +45,7 @@ public class ContaPatrimonialController implements Serializable {
         if (valorString.trim().equals("")) {
             ((UIInput) componente).setValid(false);
             String mensagem = componente.getAttributes().get("label")
-                    + ":Valor Inválido, preencha com cracteres diferentes de espaço. ";
+                    + ":Valor Inválido, preencha com caracteres diferentes de espaço. ";
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, mensagem);
             contexto.addMessage(componente.getClientId(contexto), facesMessage);
         }
@@ -61,61 +60,59 @@ public class ContaPatrimonialController implements Serializable {
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Salvo com Sucesso!");
-         
+
     }
-    
-    public String editar(){
-        return "ContaPatrimonialEditar.xhtml";
+
+    public String editar() {
+        return "FuncionarioEditar.xhtml";
     }
-    
-    public String criar(){
-        entidade = new ContaPatrimonial();
-        return "ContaPatrimonialEditar.xhtml";
+
+    public String criar() {
+        entidade = new Funcionario();
+        return "FuncionarioEditar.xhtml";
     }
-    
-    public String apagar(){
+
+    public String apagar() {
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "ContaPatrimonialListagem.xhtml";
-    }
-    
-    public String filtrar(){
-        listagem = dao.Buscar(filtro);
-        return "ContaPatrimonialListagem.xhtml";
-    }
-    
-    public String voltar(){
-        return "ContaPatrimonialListagem.xhtml";
+        return "FuncionarioListagem.xhtml";
     }
 
-    public ContaPatrimonial getEntidade() {
+    public String filtrar() {
+        listagem = dao.Buscar(filtro);
+        return "FuncionarioListagem.xhtml";
+    }
+
+    public String voltar() {
+        return "FuncionarioListagem.xhtml";
+    }
+
+    public Funcionario getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(ContaPatrimonial entidade) {
+    public void setEntidade(Funcionario entidade) {
         this.entidade = entidade;
     }
 
-    public List<ContaPatrimonial> getListagem() {
-        if(listagem == null){
-            ContaPatrimonial filtro = new ContaPatrimonial();
+    public List<Funcionario> getListagem() {
+        if (listagem == null) {
+            Funcionario filtro = new Funcionario();
             listagem = dao.Buscar(filtro);
         }
-
         return listagem;
     }
 
-    public void setListagem(List<ContaPatrimonial> listagem) {
+    public void setListagem(List<Funcionario> listagem) {
         this.listagem = listagem;
     }
 
-    public ContaPatrimonial getFiltro() {
+    public Funcionario getFiltro() {
         return filtro;
     }
 
-    public void setFiltro(ContaPatrimonial filtro) {
+    public void setFiltro(Funcionario filtro) {
         this.filtro = filtro;
     }
-    
 }

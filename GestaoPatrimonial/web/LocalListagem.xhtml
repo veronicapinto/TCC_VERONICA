@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./TemplateGeral.xhtml">
+
+            <ui:define name="content">
+                <p:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Filtros  
+                    </f:facet>  
+                    
+                     <h:outputLabel value="Descrição:" />                    
+                     <p:inputText value="${localController.filtro.descricao}" />
+                     
+                    <h:outputLabel value="Cidade:" />
+                    <p:inputText value="${localController.filtro.cidade}" />  
+
+                    <f:facet name="footer">  
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${localController.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Novo Local" action="LocalEditar.xhtml" />
+                    </f:facet>
+                </p:panelGrid> <p:dataTable value="${localController.listagem}" var="item">
+                    <p:column sortBy="descricao" headerText="Descrição">
+                        ${item.descricao}
+                    </p:column>
+                    <p:column sortBy="estado" headerText="Estado ">
+                        ${item.estado}
+                    </p:column>
+                    <p:column sortBy="cidade" headerText="Cidade ">
+                        ${item.cidade}
+                    </p:column>
+                    <p:column sortBy="endereco" headerText="Endereço ">
+                        ${item.endereco}
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${localController.editar()}">
+                            <f:setPropertyActionListener target="${localController.entidade}" value="${item}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+               
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
