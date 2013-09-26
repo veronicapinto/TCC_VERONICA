@@ -53,7 +53,7 @@ public class ContaPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " c.id =: id ";
+            filtro += " c.id =: id ";
             parametros.put("id", obj.getId());
         }
         // Se houver filtros, coloca o "where" na consulta

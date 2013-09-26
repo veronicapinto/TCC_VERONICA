@@ -20,7 +20,7 @@
                     <p:inputText value="${funcionarioController.filtro.nome}" />  
 
                     <h:outputLabel value="Login:" />
-                    <p:inputText value="${funcionarioController.filtro.login}" />  
+                    <p:inputText value="${funcionarioController.filtro.login}" /> 
 
                     <f:facet name="footer">  
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${funcionarioController.filtrar()}" style="margin:0"/>  
@@ -34,11 +34,17 @@
                     <p:column sortBy="login" headerText="Login ">
                         ${item.login}
                     </p:column>
-                    <p:column headerText="Editar">
-                        <p:commandButton value="Editar" ajax="false" action="${funcionarioController.editar()}">
-                            <f:setPropertyActionListener target="${funcionarioController.entidade}" value="${item}" />
-                        </p:commandButton>
+                    <p:column sortBy="senha" headerText="Senha ">
+                        ${item.senha}
                     </p:column>
+                    <p:column sortBy="tipo" headerText="Tipo ">
+                        ${item.tipo}
+                    </p:column>
+                    
+                    <p:commandButton value="Editar" ajax="false" action="${funcionarioController.editar()}">
+                        <f:setPropertyActionListener target="${funcionarioController.entidade}" value="${item}" />
+                    </p:commandButton>
+
                 </p:dataTable>
             </ui:define>
         </ui:composition>

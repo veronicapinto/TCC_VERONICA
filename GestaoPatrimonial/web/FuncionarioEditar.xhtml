@@ -7,28 +7,26 @@
       xmlns:f="http://java.sun.com/jsf/core">
           
     <body>
-        
+
         <ui:composition template="./TemplateGeral.xhtml">
-            
+
             <ui:define name="content">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nome*:" />
                     <p:inputText size="35" value="${funcionarioController.entidade.nome}" />
-                        
+
                     <h:outputLabel value="Login*:" />                    
                     <p:inputText size="35" value="${funcionarioController.entidade.login}" />
-                        
+
                     <h:outputLabel value="Senha*:" />
                     <p:password label="senha" size="26" value="${funcionarioController.entidade.senha}" />
-
+                        
                     Tipo*:<br/>
-                    <p:selectOneMenu value="#{funcionarioController.entidade.tipo}" label="Tipo"
-                                     required="true" >
+                    <p:selectOneMenu value="#{funcionarioController.entidade.tipo}" label="Tipo" >
                         <f:selectItem itemLabel="Selecione..." itemValue="selecione"/>
                         <f:selectItem itemLabel="teste" itemValue="teste"/>           
                     </p:selectOneMenu>
-                    <h:outputLabel value="Endereço:" />                   
-                    <p:inputText value="${localController.entidade.endereco}" style="width: 300px"/>            
+                        
                 </h:panelGrid>
                 <br/>
                 (*) Campos de Preenchimento Obrigatório

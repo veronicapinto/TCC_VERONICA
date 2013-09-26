@@ -8,14 +8,11 @@
     <body>
         
         <ui:composition template="./TemplateGeral.xhtml">
-            
+
             <ui:define name="content">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Descrição*:" />
-                    <p:inputText  value="${tipoFuncionarioController.entidade.descricao}" required="true" label="Descrição"
-                                  validator= "#{tipoFuncionarioController.validarEspacoBranco}" >
-                    </p:inputText>
-                        
+                    <p:inputText  value="${tipoFuncionarioController.entidade.descricao}" label="Descrição" />                 
                 </h:panelGrid>
                 <br/>
                 (*) Campos de Preenchimento Obrigatório
@@ -30,18 +27,19 @@
                     <p:commandButton ajax="false" value="SIM" action="${tipoFuncionarioController.salvar()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
                 </p:confirmDialog>
-
+                    
                 <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgRemover">
                     <p:commandButton ajax="false" value="SIM" action="${tipoFuncionarioController.apagar()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
-
+                        
                 </p:confirmDialog>     
-                    
-                    
+
+
             </ui:define>
-
+                
         </ui:composition>
-
+            
     </body>
 </html>
+    

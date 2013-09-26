@@ -2,12 +2,83 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="./TemplateGeral.xhtml"
-                xmlns:h="http://java.sun.com/jsf/html">
-
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+                    
     <ui:define name="content">
         <h:panelGrid columns="2">
-            
-        </h:panelGrid>
-    </ui:define>
 
+            <h:outputLabel value="Descrição*:" />
+            <p:inputText size="35" value="${bemController.entidade.descricao}" />
+
+            Conta*:<br/>
+            <p:selectOneMenu value="${bemController.entidade.conta}" label="Conta">
+                <f:selectItem itemLabel="Selecione..." itemValue=""/>          
+            </p:selectOneMenu>
+                
+            <h:outputLabel value="Valor*:" />
+            <p:inputText value="${bemController.entidade.valor}" />
+
+            <h:outputLabel value="Quantidade*:" />
+            <p:inputText value="${bemController.entidade.quantidade}" />
+                
+            Unidade*:<br/>
+            <p:selectOneMenu value="#{bemController.entidade.unidade}" label="Unidade">
+                <f:selectItem itemLabel="Selecione..." itemValue="selecione"/>
+                <f:selectItem itemLabel="teste" itemValue="teste"/>           
+            </p:selectOneMenu>
+                
+            Tipo de Aquisição*:<br/>
+            <p:selectOneMenu value="#{bemController.entidade.tipo}" label="Tipo de Aquisição">
+                <f:selectItem itemLabel="Selecione..." itemValue="selecione"/>
+                <f:selectItem itemLabel="teste" itemValue="teste"/>           
+            </p:selectOneMenu>
+                
+            Funcionário*:<br/>
+            <p:selectOneMenu value="#{bemController.entidade.funcionario}" label="Funcionário">
+                <f:selectItem itemLabel="Selecione..." itemValue="selecione"/>
+                <f:selectItem itemLabel="teste" itemValue="teste"/>           
+            </p:selectOneMenu>
+                  
+            <h:outputLabel value="Estado de Conservação*:" />
+            <p:inputText size="35" value="${bemController.entidade.estadoCons}" />
+                  
+                  
+            <h:outputLabel value="Local*:" />
+            <p:inputText size="35" value="${bemController.entidade.local}" />
+                  
+            Data de Aquisição*:
+            <p:calendar value="#{bemController.entidade.dataAquisicao}" required="true" 
+            label="Data de Aquisição" pattern="dd/MM/yyyy" locale="pt_BR"/>
+                  
+            Data*:
+            <p:calendar value="#{bemController.entidade.data}" required="true" 
+            label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>
+                  
+                  
+        </h:panelGrid>
+        <br/>
+        (*) Campos de Preenchimento Obrigatório
+        <br/><br/>
+        <p:panel id="Rodape">
+            <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+            <p:commandButton value="Remover" onclick="msgRemover.show()"/>
+            <p:commandButton value="Voltar para listagem" ajax="false" action="${bemController.voltar()}" />
+        </p:panel>       
+        <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                         severity="alert" widgetVar="msgSalvar">
+            <p:commandButton ajax="false" value="SIM" action="${bemController.salvar()}" />
+            <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
+        </p:confirmDialog>
+            
+        <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
+                         severity="alert" widgetVar="msgRemover">
+            <p:commandButton ajax="false" value="SIM" action="${bemController.apagar()}" />
+            <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+                
+        </p:confirmDialog>
+            
+    </ui:define>
+        
 </ui:composition>

@@ -15,20 +15,18 @@ import javax.persistence.Query;
  *
  * @author veronica
  */
-@Stateless (name="IBemPatrimonialRepositorio")
+@Stateless(name = "IBemPatrimonialRepositorio")
 public class BemPatrimonialDAO
-    extends DAOGenerico<BemPatrimonial> 
-    implements IBemPatrimonialRepositorio
-{
-    public BemPatrimonialDAO(){
+        extends DAOGenerico<BemPatrimonial>
+        implements IBemPatrimonialRepositorio {
+
+    public BemPatrimonialDAO() {
         super(BemPatrimonial.class);
     }
 
-    
-
     @Override
     public List<BemPatrimonial> Buscar(BemPatrimonial obj) {
-  
+
         // Corpo da consulta
         String consulta = "select b from BemPatrimonial b";
 
@@ -43,8 +41,8 @@ public class BemPatrimonialDAO
             filtro += " b.conta =: conta";
             parametros.put("conta", obj.getConta());
         }
-        
-         if (obj.getDescricao() != null && obj.getDescricao().length()>0) {
+
+        if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
@@ -52,110 +50,51 @@ public class BemPatrimonialDAO
             parametros.put("descricao", obj.getDescricao());
         }
 
-        if (obj.getData() != null) {
+
+        if (obj.getEstadoCons() != null && obj.getEstadoCons().toString().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " b.data =: data";
-            parametros.put("data", obj.getData());
-        }
-
-        if (obj.getDataAquisicao() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " b.dataAquisicao =: dataAquisicao";
-            parametros.put("dataAquisicao", obj.getDataAquisicao());
-        }
-
-        if (obj.getDataBaixa() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " b.dataBaixa =: dataBaixa";
-            parametros.put("dataBaixa", obj.getDataBaixa());
-
-        }
-       
-
-        if (obj.getDescricaoBaixa() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " b.descricaoBaixa =: descricaoBaixa";
-            parametros.put("descricaoBaixa", obj.getDescricaoBaixa());
-        }
-
-        if (obj.getDescricaoTipoAq() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " b.descricaoTipoAq =: descricaoTipoAq";
-            parametros.put("descricaoTipoAq", obj.getDescricaoTipoAq());
-        }
-
-
-        if (obj.getEstadoCons() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " b.estadoCons =: estadoCons";
+            filtro += " b.estadoCons =: estadoCons";
             parametros.put("estadoCons", obj.getEstadoCons());
         }
 
-        if (obj.getFuncionario() != null) {
+        if (obj.getFuncionario() != null && obj.getFuncionario().toString().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " b.funcionario =: funcionario";
+            filtro += " b.funcionario =: funcionario";
             parametros.put("funcionario", obj.getFuncionario());
         }
 
-        if (obj.getFuncionarioBaixa() != null) {
+        if (obj.getId() != null && obj.getId() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " b.funcionarioBaixa =: funcionarioBaixa";
-            parametros.put("funcionarioBaixa", obj.getFuncionarioBaixa());
-        }
-
-
-        if (obj.getId() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " b.id =: id";
+            filtro += " b.id =: id";
             parametros.put("id", obj.getId());
         }
 
-        if (obj.getLocal() != null) {
+        if (obj.getLocal() != null && obj.getLocal().toString().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " b.local =: local";
+            filtro += " b.local =: local";
             parametros.put("local", obj.getLocal());
         }
 
-        if (obj.getMotivo() != null) {
+        if (obj.getQuantidade() != null && obj.getQuantidade()>0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " b.motivo =: motivo";
-            parametros.put("motivo", obj.getMotivo());
-        }
-
-        if (obj.getQuantidade() != null) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro = " b.quantidade =: quantidade";
+            filtro += " b.quantidade =: quantidade";
             parametros.put("quantidade", obj.getQuantidade());
         }
-        if (obj.getTipo() != null) {
+        if (obj.getTipo() != null && obj.getTipo().toString().length()>0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " b.tipo =: tipo";
+            filtro += " b.tipo =: tipo";
             parametros.put("tipo", obj.getTipo());
         }
 
@@ -166,14 +105,76 @@ public class BemPatrimonialDAO
             filtro = " b.unidade =: unidade";
             parametros.put("unidade", obj.getUnidade());
         }
-        if (obj.getValor() != 0) {
+        if (obj.getValor() != 0 && obj.getValor()>0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " b.valor =: valor";
+            filtro += " b.valor =: valor";
             parametros.put("valor", obj.getValor());
         }
 
+
+        if (obj.getData() != null && obj.getData().toString().length() > 0) {
+            if (filtro.length() > 0) {
+                filtro = filtro + " and ";
+            }
+            filtro += " b.data =: data";
+            parametros.put("data", obj.getData());
+        }
+
+        if (obj.getDataAquisicao() != null && obj.getDataAquisicao().toString().length() > 0) {
+            if (filtro.length() > 0) {
+                filtro = filtro + " and ";
+            }
+            filtro += " b.dataAquisicao =: dataAquisicao";
+            parametros.put("dataAquisicao", obj.getDataAquisicao());
+        }
+
+        //
+
+        if (obj.getFuncionarioBaixa() != null) {
+            if (filtro.length() > 0) {
+                filtro = filtro + " and ";
+            }
+            filtro = " b.funcionarioBaixa =: funcionarioBaixa";
+            parametros.put("funcionarioBaixa", obj.getFuncionarioBaixa());
+        }
+
+
+        if (obj.getMotivo() != null) {
+            if (filtro.length() > 0) {
+                filtro = filtro + " and ";
+            }
+            filtro = " b.motivo =: motivo";
+            parametros.put("motivo", obj.getMotivo());
+        }
+
+
+        if (obj.getDataBaixa() != null) {
+            if (filtro.length() > 0) {
+                filtro = filtro + " and ";
+            }
+            filtro = " b.dataBaixa =: dataBaixa";
+            parametros.put("dataBaixa", obj.getDataBaixa());
+
+        }
+
+
+        if (obj.getDescricaoBaixa() != null && obj.getDescricaoBaixa().length()>0) {
+            if (filtro.length() > 0) {
+                filtro = filtro + " and ";
+            }
+            filtro += " b.descricaoBaixa =: descricaoBaixa";
+            parametros.put("descricaoBaixa", obj.getDescricaoBaixa());
+        }
+
+        if (obj.getDescricaoTipoAq() != null && obj.getDescricaoTipoAq().length()>0) {
+            if (filtro.length() > 0) {
+                filtro += filtro + " and ";
+            }
+            filtro = " b.descricaoTipoAq =: descricaoTipoAq";
+            parametros.put("descricaoTipoAq", obj.getDescricaoTipoAq());
+        }
 
         // Se houver filtros, coloca o "where" na consulta
         if (filtro.length() > 0) {

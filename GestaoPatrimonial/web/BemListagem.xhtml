@@ -1,10 +1,80 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="./TemplateGeral.xhtml">
+                template="./TemplateGeral.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        Teste 1,2,3
+       <p:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Filtros  
+                    </f:facet>  
+
+                    <h:outputLabel value="Descrição:" />
+                    <p:inputText value="${bemController.filtro.descricao}" />  
+
+                    <h:outputLabel value="Conta:" />
+                    <p:inputText value="${bemController.filtro.conta}" />  
+
+                    <f:facet name="footer">  
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${bemController.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Novo Bem" action="${bemController.criar()}" />
+                    </f:facet>  
+       </p:panelGrid>
+
+       <p:dataTable value="${bemController.listagem}" var="item">
+           <p:column sortBy="descricao" headerText="Descrição">
+                        ${item.descricao}
+           </p:column>
+
+           <p:column sortBy="conta" headerText="Conta">
+                        ${item.conta}
+           </p:column>
+
+           <p:column sortBy="valor" headerText="Valor">
+                        ${item.valor}
+           </p:column>
+
+           <p:column sortBy="quantidade" headerText="Quantidade">
+                        ${item.quantidade}
+           </p:column>
+
+           <p:column sortBy="unidade" headerText="Unidade">
+                        ${item.unidade}
+           </p:column>
+
+           <p:column sortBy="estadoConservacao" headerText="Estado de Conservação">
+                        ${item.estadoCons}
+           </p:column>
+
+           <p:column sortBy="local" headerText="Local">
+                        ${item.local}
+           </p:column>
+
+           <p:column sortBy="funcionario" headerText="Funcionário">
+                        ${item.funcionario}
+           </p:column>
+
+           <p:column sortBy="tipoAq" headerText="Tipo de Aquisição">
+                        ${item.tipo}
+           </p:column>
+
+           <p:column sortBy="dataAq" headerText=" Data de Aquisição">
+                        ${item.dataAquisicao}
+           </p:column>
+
+           <p:column sortBy="data" headerText="Data">
+                        ${item.data}
+           </p:column>
+
+           <p:column headerText="Editar">
+               <p:commandButton value="Editar" ajax="false" action="${bemController.editar()}">
+                   <f:setPropertyActionListener target="${bemController.entidade}" value="${item}" />
+               </p:commandButton>
+           </p:column>
+       </p:dataTable>
     </ui:define>
 
 </ui:composition>
