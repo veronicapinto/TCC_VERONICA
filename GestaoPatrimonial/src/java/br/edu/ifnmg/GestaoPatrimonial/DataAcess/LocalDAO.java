@@ -41,25 +41,25 @@ public class LocalDAO
 
         // Verifica campo por campo os valores que serão filtrados
 
-        if (obj.getDescricao() != null) {
-            filtro += "l.descricao=:descricao";
-            parametros.put("descricao", obj.getDescricao());
+        if (obj.getDescricao() != null&& obj.getDescricao().length() > 0) {
+            filtro += " l.descricao=:descricao ";
+            parametros.put(" descricao ", obj.getDescricao());
         }
 
         if (obj.getCidade() != null && obj.getCidade().length() > 0) {
             if (filtro.length() > 0) {
-                filtro = filtro + "and";
+                filtro += filtro + " and ";
             }
-            filtro += "l.cidade=:cidade";
+            filtro += " l.cidade=:cidade ";
             parametros.put("cidade", obj.getCidade());
         }
 
         if (obj.getId() != null && obj.getId() > 0) {
             if (filtro.length() > 0) {
-                filtro = filtro + "and";
+                filtro = filtro + " and ";
             }
-            filtro += "l.id=:id";
-            parametros.put("id", obj.getId());
+            filtro += " l.id=:id ";
+            parametros.put(" id ", obj.getId());
         }
 
 
@@ -68,14 +68,14 @@ public class LocalDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " l.endereco =: endereco";
+            filtro += " l.endereco =:endereco";
             parametros.put("endereco", obj.getEndereco());
         }
         if (obj.getEstado() != null && obj.getEstado().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " l.estado =: estado";
+            filtro += " l.estado =:estado";
             parametros.put("estado", obj.getEstado());
         }
 

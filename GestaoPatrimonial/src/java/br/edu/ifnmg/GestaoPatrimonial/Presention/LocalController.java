@@ -87,6 +87,7 @@ public class LocalController implements Serializable {
   }
   
   public String voltar(){
+      listagem=null;
       return "LocalListagem.xhtml";
   }
 

@@ -63,7 +63,7 @@ public class TipoFuncionario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoFuncionario[ id=" + id + " ]";
+        return descricao;
     }
     
 }

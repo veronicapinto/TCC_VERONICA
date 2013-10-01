@@ -22,6 +22,11 @@
                     <h:outputLabel value="Login:" />
                     <p:inputText value="${funcionarioController.filtro.login}" /> 
 
+                    <h:outputLabel value="Tipo:" />
+                    <p:selectOneMenu value="#{funcionarioController.filtro.tipo}" converter="${tipoFuncionarioConverter}">
+                        <f:selectItems value="#{funcionarioController.listagemTipos}" />
+                    </p:selectOneMenu>
+                    
                     <f:facet name="footer">  
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${funcionarioController.filtrar()}" style="margin:0"/>  
                         <p:commandButton ajax="false" value="Novo Funcionário" action="${funcionarioController.criar()}" />
@@ -41,9 +46,11 @@
                         ${item.tipo}
                     </p:column>
                     
-                    <p:commandButton value="Editar" ajax="false" action="${funcionarioController.editar()}">
-                        <f:setPropertyActionListener target="${funcionarioController.entidade}" value="${item}" />
-                    </p:commandButton>
+                     <p:column headerText="Editar">
+                         <p:commandButton value="Editar" ajax="false" action="${funcionarioController.editar()}">
+                             <f:setPropertyActionListener target="${funcionarioController.entidade}" value="${item}" />
+                        </p:commandButton>
+                    </p:column>
 
                 </p:dataTable>
             </ui:define>

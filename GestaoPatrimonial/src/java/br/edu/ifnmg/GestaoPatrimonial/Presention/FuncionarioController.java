@@ -4,14 +4,14 @@
  */
 package br.edu.ifnmg.GestaoPatrimonial.Presention;
 
-import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ContaPatrimonial;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Funcionario;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IFuncionarioRepositorio;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ITipoFuncionarioRepositorio;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoFuncionario;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -29,8 +29,13 @@ public class FuncionarioController implements Serializable {
     Funcionario entidade;
     Funcionario filtro;
     List<Funcionario> listagem;
+    List<TipoFuncionario> listagemTipos;
+    
     @EJB
     IFuncionarioRepositorio dao;
+    
+    @EJB
+    ITipoFuncionarioRepositorio daoTipo;
 
     /**
      * Creates a new instance of FuncionarioController
@@ -85,6 +90,7 @@ public class FuncionarioController implements Serializable {
     }
 
     public String voltar() {
+        listagem =null;
         return "FuncionarioListagem.xhtml";
     }
 
@@ -106,6 +112,18 @@ public class FuncionarioController implements Serializable {
 
     public void setListagem(List<Funcionario> listagem) {
         this.listagem = listagem;
+    }
+
+    public List<TipoFuncionario> getListagemTipos() {
+        if (listagemTipos == null) {
+            listagemTipos = daoTipo.Buscar(null);
+        }
+        return listagemTipos;
+    }
+
+    public void setListagemTipos(List<TipoFuncionario> listagemTipos) {
+        
+        this.listagemTipos = listagemTipos;
     }
 
     public Funcionario getFiltro() {

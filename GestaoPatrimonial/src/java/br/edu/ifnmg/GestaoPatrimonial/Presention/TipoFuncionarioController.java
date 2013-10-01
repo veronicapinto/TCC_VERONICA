@@ -84,6 +84,7 @@ public class TipoFuncionarioController implements Serializable {
     }
 
     public String voltar() {
+        listagem =null;
         return "TipoFuncionarioListagem.xhtml";
     }
 

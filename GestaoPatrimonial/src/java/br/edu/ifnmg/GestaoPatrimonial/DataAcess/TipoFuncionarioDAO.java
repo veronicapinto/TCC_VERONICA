@@ -36,24 +36,25 @@ public class TipoFuncionarioDAO
         HashMap<String, Object> parametros = new HashMap<String, Object>();
 
         // Verifica campo por campo os valores que serão filtrados
-        
-         if (obj.getId() != null) {
-           filtro += " tf.id=:id ";
-           parametros.put("id", obj.getId());
-         }
+        if (obj != null) {
+            if (obj.getId() != null) {
+                filtro += " tf.id=:id ";
+                parametros.put("id", obj.getId());
+            }
 
-        if (obj.getDescricao() != null && obj.getDescricao().length()>0) {
-           if (filtro.length() > 0){
-               filtro = filtro + "and"; 
-           }
-           filtro += "tf.descricao=:descricao";
-           parametros.put("descricao", obj.getDescricao());
-        }
+            if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + "and";
+                }
+                filtro += "tf.descricao=:descricao";
+                parametros.put("descricao", obj.getDescricao());
+            }
 
-       
-        // Se houver filtros, coloca o "where" na consulta
-        if (filtro.length() > 0) {
-            consulta = consulta + " where " + filtro;
+
+            // Se houver filtros, coloca o "where" na consulta
+            if (filtro.length() > 0) {
+                consulta = consulta + " where " + filtro;
+            }
         }
 
         // Cria a consulta no JPA

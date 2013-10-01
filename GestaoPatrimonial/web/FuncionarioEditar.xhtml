@@ -9,24 +9,23 @@
     <body>
 
         <ui:composition template="./TemplateGeral.xhtml">
-
+            
             <ui:define name="content">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nome*:" />
                     <p:inputText size="35" value="${funcionarioController.entidade.nome}" />
-
+                        
                     <h:outputLabel value="Login*:" />                    
                     <p:inputText size="35" value="${funcionarioController.entidade.login}" />
-
+                        
                     <h:outputLabel value="Senha*:" />
                     <p:password label="senha" size="26" value="${funcionarioController.entidade.senha}" />
-                        
-                    Tipo*:<br/>
-                    <p:selectOneMenu value="#{funcionarioController.entidade.tipo}" label="Tipo" >
-                        <f:selectItem itemLabel="Selecione..." itemValue="selecione"/>
-                        <f:selectItem itemLabel="teste" itemValue="teste"/>           
+
+                    <h:outputLabel value="Tipo*:" />
+                    <p:selectOneMenu value="#{funcionarioController.entidade.tipo}" converter="${tipoFuncionarioConverter}">
+                        <f:selectItems value="#{funcionarioController.listagemTipos}" />
                     </p:selectOneMenu>
-                        
+
                 </h:panelGrid>
                 <br/>
                 (*) Campos de Preenchimento Obrigatório
@@ -41,17 +40,16 @@
                     <p:commandButton ajax="false" value="SIM" action="${funcionarioController.salvar()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
                 </p:confirmDialog>
-                    
+
                 <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgRemover">
                     <p:commandButton ajax="false" value="SIM" action="${funcionarioController.apagar()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
-                        
+
                 </p:confirmDialog>  
             </ui:define>
-
+                
         </ui:composition>
-
+            
     </body>
 </html>
-    

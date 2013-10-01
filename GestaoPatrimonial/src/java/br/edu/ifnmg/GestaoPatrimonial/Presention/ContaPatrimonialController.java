@@ -86,6 +86,7 @@ public class ContaPatrimonialController implements Serializable {
     }
     
     public String voltar(){
+        listagem =null;
         return "ContaPatrimonialListagem.xhtml";
     }
 
