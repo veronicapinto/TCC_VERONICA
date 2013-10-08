@@ -30,10 +30,8 @@ public class FuncionarioController implements Serializable {
     Funcionario filtro;
     List<Funcionario> listagem;
     List<TipoFuncionario> listagemTipos;
-    
     @EJB
     IFuncionarioRepositorio dao;
-    
     @EJB
     ITipoFuncionarioRepositorio daoTipo;
 
@@ -43,17 +41,6 @@ public class FuncionarioController implements Serializable {
     public FuncionarioController() {
         entidade = new Funcionario();
         filtro = new Funcionario();
-    }
-
-    public void validarEspacoBranco(FacesContext contexto, UIComponent componente, Object valor) {
-        String valorString = (String) valor;
-        if (valorString.trim().equals("")) {
-            ((UIInput) componente).setValid(false);
-            String mensagem = componente.getAttributes().get("label")
-                    + ":Valor Inválido, preencha com caracteres diferentes de espaço. ";
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, mensagem);
-            contexto.addMessage(componente.getClientId(contexto), facesMessage);
-        }
     }
 
     public void exibirMensagem(String msg) {
@@ -90,7 +77,7 @@ public class FuncionarioController implements Serializable {
     }
 
     public String voltar() {
-        listagem =null;
+        listagem = null;
         return "FuncionarioListagem.xhtml";
     }
 
@@ -122,7 +109,7 @@ public class FuncionarioController implements Serializable {
     }
 
     public void setListagemTipos(List<TipoFuncionario> listagemTipos) {
-        
+
         this.listagemTipos = listagemTipos;
     }
 

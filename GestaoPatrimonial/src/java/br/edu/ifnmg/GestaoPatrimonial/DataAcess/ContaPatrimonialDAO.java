@@ -36,36 +36,37 @@ public class ContaPatrimonialDAO
         //Guarda a lista de parametros da query
         HashMap<String, Object> parametros = new HashMap<String, Object>();
 
-        //verifica campo por campo os valores que serão filtrados
-        if (obj.getConta() != null) {
-            filtro += " c.conta=:conta ";
-            parametros.put("conta", obj.getConta());
-        }
-        if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
+        if (obj != null) {
+            //verifica campo por campo os valores que serão filtrados
+            if (obj.getConta() != null) {
+                filtro += " c.conta=:conta ";
+                parametros.put("conta", obj.getConta());
             }
-            filtro += "c.descricao=:descricao";
-            parametros.put("descricao", obj.getDescricao());
+            if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += "c.descricao=:descricao";
+                parametros.put("descricao", obj.getDescricao());
 
-        }
-        if (obj.getId() != null && obj.getId() > 0) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
             }
-            filtro += " c.id =: id ";
-            parametros.put("id", obj.getId());
+            if (obj.getId() != null && obj.getId() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " c.id =: id ";
+                parametros.put("id", obj.getId());
+            }
+            // Se houver filtros, coloca o "where" na consulta
+            if (filtro.length() > 0) {
+                consulta = consulta + " where " + filtro;
+            }
         }
-        // Se houver filtros, coloca o "where" na consulta
-        if (filtro.length() > 0) {
-            consulta = consulta + " where " + filtro;
-        }
-
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
 
         // Aplica os parâmetros da consulta
-        
+
         for (String par : parametros.keySet()) {
             query.setParameter(par, parametros.get(par));
         }

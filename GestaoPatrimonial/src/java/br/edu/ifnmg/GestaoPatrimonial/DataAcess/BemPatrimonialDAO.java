@@ -37,6 +37,8 @@ public class BemPatrimonialDAO
         HashMap<String, Object> parametros = new HashMap<String, Object>();
 
         // Verifica campo por campo os valores que serão filtrados
+        if(obj!=null)
+            
         if (obj.getConta() != null && obj.getConta().toString().length() > 0) {
             filtro += " b.conta =: conta";
             parametros.put("conta", obj.getConta());

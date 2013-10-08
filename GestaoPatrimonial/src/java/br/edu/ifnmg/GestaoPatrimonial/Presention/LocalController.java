@@ -25,11 +25,8 @@ import javax.faces.context.FacesContext;
 public class LocalController implements Serializable {
 
     Local entidade;
-    
     Local filtro;
-    
     List<Local> listagem;
-    
     @EJB
     ILocalRepositorio dao;
 
@@ -39,18 +36,6 @@ public class LocalController implements Serializable {
     public LocalController() {
         entidade = new Local();
         filtro = new Local();
-    }
-
-    public void validarEspacoBranco(FacesContext contexto, UIComponent componente, Object valor) {
-        String valorString = (String) valor;
-        if (valorString.trim().equals("")) {
-            ((UIInput) componente).setValid(false);
-            String mensagem = componente.getAttributes().get("label")
-                    + ":Valor Inválido, preencha com caracteres diferentes de espaço. ";
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, mensagem);
-            contexto.addMessage(componente.getClientId(contexto), facesMessage);
-        }
-
     }
 
     public void exibirMensagem(String msg) {
@@ -68,28 +53,28 @@ public class LocalController implements Serializable {
         return "LocalEditar.xhtml";
 
     }
-   
-   public String criar(){
-       entidade = new Local();
-       return "LocalEditar.xhtml";
-   }
-   
-   public String apagar(){
-       dao.Apagar(entidade);
-       listagem = null;
-       exibirMensagem("Apagado com Sucesso");
-       return "LocalEditar.xhtml";
-   }
-   
-  public String filtrar(){
-      listagem = dao.Buscar(filtro);
-      return "LocalListagem.xhtml";
-  }
-  
-  public String voltar(){
-      listagem=null;
-      return "LocalListagem.xhtml";
-  }
+
+    public String criar() {
+        entidade = new Local();
+        return "LocalEditar.xhtml";
+    }
+
+    public String apagar() {
+        dao.Apagar(entidade);
+        listagem = null;
+        exibirMensagem("Apagado com Sucesso");
+        return "LocalEditar.xhtml";
+    }
+
+    public String filtrar() {
+        listagem = dao.Buscar(filtro);
+        return "LocalListagem.xhtml";
+    }
+
+    public String voltar() {
+        listagem = null;
+        return "LocalListagem.xhtml";
+    }
 
     public Local getEntidade() {
         return entidade;
@@ -98,9 +83,9 @@ public class LocalController implements Serializable {
     public void setEntidade(Local entidade) {
         this.entidade = entidade;
     }
-    
+
     public List<Local> getListagem() {
-        if(listagem == null){
+        if (listagem == null) {
             Local filtro = new Local();
             listagem = dao.Buscar(filtro);
         }
@@ -118,8 +103,4 @@ public class LocalController implements Serializable {
     public void setFiltro(Local filtro) {
         this.filtro = filtro;
     }
-  
-  
-   
-   
 }

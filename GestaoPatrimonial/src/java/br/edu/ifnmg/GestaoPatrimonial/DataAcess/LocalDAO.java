@@ -41,49 +41,50 @@ public class LocalDAO
 
         // Verifica campo por campo os valores que serão filtrados
 
-        if (obj.getDescricao() != null&& obj.getDescricao().length() > 0) {
-            filtro += " l.descricao=:descricao ";
-            parametros.put(" descricao ", obj.getDescricao());
-        }
 
-        if (obj.getCidade() != null && obj.getCidade().length() > 0) {
-            if (filtro.length() > 0) {
-                filtro += filtro + " and ";
+        if (obj != null) {
+            if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
+                filtro += " l.descricao =:descricao ";
+                parametros.put("descricao", obj.getDescricao());
             }
-            filtro += " l.cidade=:cidade ";
-            parametros.put("cidade", obj.getCidade());
-        }
 
-        if (obj.getId() != null && obj.getId() > 0) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
+
+            if (obj.getCidade() != null && obj.getCidade().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro += filtro + " and ";
+                }
+                filtro += " l.cidade=:cidade ";
+                parametros.put("cidade", obj.getCidade());
             }
-            filtro += " l.id=:id ";
-            parametros.put(" id ", obj.getId());
-        }
 
-
-
-        if (obj.getEndereco() != null && obj.getEndereco().length() > 0) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
+            if (obj.getId() != null && obj.getId() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " l.id=:id ";
+                parametros.put("id", obj.getId());
             }
-            filtro += " l.endereco =:endereco";
-            parametros.put("endereco", obj.getEndereco());
-        }
-        if (obj.getEstado() != null && obj.getEstado().length() > 0) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
+
+            if (obj.getEndereco() != null && obj.getEndereco().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " l.endereco=:endereco";
+                parametros.put("endereco", obj.getEndereco());
             }
-            filtro += " l.estado =:estado";
-            parametros.put("estado", obj.getEstado());
-        }
+            if (obj.getEstado() != null && obj.getEstado().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " l.estado=:estado ";
+                parametros.put("estado", obj.getEstado());
+            }
 
-        // Se houver filtros, coloca o "where" na consulta
-        if (filtro.length() > 0) {
-            consulta = consulta + " where " + filtro;
+            // Se houver filtros, coloca o "where" na consulta
+            if (filtro.length() > 0) {
+                consulta = consulta + " where " + filtro;
+            }
         }
-
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
 
@@ -97,4 +98,3 @@ public class LocalDAO
 
     }
 }
-

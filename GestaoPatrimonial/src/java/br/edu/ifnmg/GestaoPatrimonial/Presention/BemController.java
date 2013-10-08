@@ -13,6 +13,7 @@ import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IContaPatrimonialRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IFuncionarioRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ILocalRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Local;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoAquisicao;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Unidade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -32,34 +33,24 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class BemController implements Serializable {
 
-    
     BemPatrimonial entidade;
-    
     BemPatrimonial filtro;
-    
     List<BemPatrimonial> listagem;
-    
     List<ContaPatrimonial> listagemcontas;
     List<Funcionario> listagemfuncionarios;
     List<Local> listagemlocais;
-    
     Unidade[] listagemUnidades;
     EstadoConservacao[] listagemEstadosC;
-    
+    TipoAquisicao[] listagemTipoAq;
     @EJB
-    IBemPatrimonialRepositorio dao;    
-    
+    IBemPatrimonialRepositorio dao;
     @EJB
-    IContaPatrimonialRepositorio daoConta;    
-    
+    IContaPatrimonialRepositorio daoConta;
     @EJB
     IFuncionarioRepositorio daoFuncionario;
-    
     @EJB
     ILocalRepositorio daoLocal;
-    
-    
-    
+
     /**
      * Creates a new instance of BemController
      */
@@ -68,17 +59,6 @@ public class BemController implements Serializable {
         filtro = new BemPatrimonial();
         listagemUnidades = Unidade.values();
         listagemEstadosC = EstadoConservacao.values();
-    }
-
-    public void validarEspacoBranco(FacesContext contexto, UIComponent componente, Object valor) {
-        String valorString = (String) valor;
-        if (valorString.trim().equals("")) {
-            ((UIInput) componente).setValid(false);
-            String mensagem = componente.getAttributes().get("label")
-                    + ":Valor Inválido, preencha com cracteres diferentes de espaço. ";
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, mensagem);
-            contexto.addMessage(componente.getClientId(contexto), facesMessage);
-        }
     }
 
     public void exibirMensagem(String msg) {
@@ -127,14 +107,15 @@ public class BemController implements Serializable {
     public void setEntidade(BemPatrimonial entidade) {
         this.entidade = entidade;
     }
-    
-     public BemPatrimonial getFiltro() {
+
+    public BemPatrimonial getFiltro() {
         return filtro;
     }
 
     public void setFiltro(BemPatrimonial filtro) {
         this.filtro = filtro;
     }
+
     public List<BemPatrimonial> getListagem() {
         if (listagem == null) {
             BemPatrimonial filtro = new BemPatrimonial();
@@ -152,7 +133,7 @@ public class BemController implements Serializable {
             BemPatrimonial filtro = new BemPatrimonial();
             listagemfuncionarios = daoFuncionario.Buscar(null);
         }
-        
+
         return listagemfuncionarios;
     }
 
@@ -173,19 +154,18 @@ public class BemController implements Serializable {
     }
 
     public List<Local> getListagemlocais() {
+        if (listagemlocais == null) {
+            BemPatrimonial filtro = new BemPatrimonial();
+            listagemlocais = daoLocal.Buscar(null);
+        }
         return listagemlocais;
     }
 
     public void setListagemlocais(List<Local> listagemlocais) {
         this.listagemlocais = listagemlocais;
     }
-    
-    
-    
-    
-    
 
-      //GET e SET das enumerações...
+    //GET e SET das enumerações...
     public Unidade[] getListagemUnidades() {
         if (listagemUnidades == null) {
             listagemUnidades = Unidade.values();
@@ -208,5 +188,14 @@ public class BemController implements Serializable {
         this.listagemEstadosC = listagemEstadosC;
     }
 
-   
+    public TipoAquisicao[] getListagemTipoAq() {
+        if (listagemTipoAq == null) {
+            listagemTipoAq = TipoAquisicao.values();
+        }
+        return listagemTipoAq;
+    }
+
+    public void setListagemTipoAq(TipoAquisicao[] listagemTipoAq) {
+        this.listagemTipoAq = listagemTipoAq;
+    }
 }

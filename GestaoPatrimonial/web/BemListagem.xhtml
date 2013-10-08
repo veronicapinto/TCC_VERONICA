@@ -24,7 +24,7 @@
                     </f:facet>  
        </p:panelGrid>
 
-       <p:dataTable value="${bemController.listagem}" var="item">
+        <p:dataTable value="${bemController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
            <p:column sortBy="descricao" headerText="Descrição">
                         ${item.descricao}
            </p:column>

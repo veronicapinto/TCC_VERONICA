@@ -16,14 +16,13 @@ import javax.persistence.Query;
 /**
  *
  * @author veronica
- */ 
+ */
 @Stateless(name = "IFuncionarioRepositorio")
-public class FuncionarioDAO 
-    extends DAOGenerico<Funcionario>
-    implements IFuncionarioRepositorio
+public class FuncionarioDAO
+        extends DAOGenerico<Funcionario>
+        implements IFuncionarioRepositorio {
 
-    {
-    public FuncionarioDAO(){
+    public FuncionarioDAO() {
         super(Funcionario.class);
     }
 
@@ -39,46 +38,47 @@ public class FuncionarioDAO
         HashMap<String, Object> parametros = new HashMap<String, Object>();
 
         // Verifica campo por campo os valores que serão filtrados
+        if (obj != null) {
+            if (obj.getNome() != null && obj.getNome().length() > 0) {
+                filtro += " f.nome =:nome ";
+                parametros.put("nome", obj.getNome());
+            }
 
-        if (obj.getNome() != null && obj.getNome().length() > 0) {
-            filtro += " f.nome =:nome ";
-            parametros.put("nome", obj.getNome());
-        }
+            if (obj.getLogin() != null && obj.getLogin().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro += filtro + " and ";
+                }
+                filtro += " f.login=:login ";
+                parametros.put("login", obj.getLogin());
+            }
 
-        if (obj.getLogin() != null && obj.getLogin().length() > 0) {
+            if (obj.getId() != null && obj.getId() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " f.id =: id";
+                parametros.put("id", obj.getId());
+            }
+
+            if (obj.getSenha() != null && obj.getSenha().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " f.senha =: senha";
+                parametros.put("senha", obj.getSenha());
+            }
+
+            if (obj.getTipo() != null && obj.getTipo().toString().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " f.tipo =:tipo ";
+                parametros.put("tipo", obj.getTipo());
+            }
+            // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                filtro += filtro + " and ";
+                consulta = consulta + " where " + filtro;
             }
-            filtro += " f.login=:login ";
-            parametros.put("login", obj.getLogin());
-        }
-
-        if (obj.getId() != null && obj.getId() > 0) {
-            if(filtro.length() > 0) {
-                filtro=filtro + " and ";
-            }
-            filtro += " f.id =: id";
-            parametros.put("id", obj.getId());
-        }
-
-        if (obj.getSenha() != null && obj.getSenha().length() > 0) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro += " f.senha =: senha";
-            parametros.put("senha", obj.getSenha());
-        }
-
-        if (obj.getTipo() != null && obj.getTipo().toString().length() > 0) {
-            if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro += " f.tipo =:tipo ";
-            parametros.put("tipo", obj.getTipo());
-        }
-        // Se houver filtros, coloca o "where" na consulta
-        if (filtro.length() > 0) {
-            consulta = consulta + " where " + filtro;
         }
 
         // Cria a consulta no JPA

@@ -10,41 +10,41 @@
         <h:panelGrid columns="2">
             
             <h:outputLabel value="Descrição*:" />
-            <p:inputText size="35" value="${bemController.entidade.descricao}" />
+            <p:inputText size="35" value="${bemController.entidade.descricao}" required="true"/>
                 
             <h:outputLabel value="Conta*:" />           
-            <p:selectOneMenu value="${bemController.entidade.conta}" converter="${contaPatrimonialConverter}">
+            <p:selectOneMenu value="${bemController.entidade.conta}" required="true" converter="${contaPatrimonialConverter}">
                 <f:selectItems value="${bemController.listagemcontas}" />
             </p:selectOneMenu>
                         
             <h:outputLabel value="Valor*:" />
-            <p:inputText value="${bemController.entidade.valor}" />
+            <p:inputText value="${bemController.entidade.valor}" required="true"/>
                 
             <h:outputLabel value="Quantidade*:" />
-            <p:inputText value="${bemController.entidade.quantidade}" />
+            <p:inputText value="${bemController.entidade.quantidade}" required="true" />
 
             <h:outputLabel value="Unidade*:" />           
-            <p:selectOneMenu value="${bemController.entidade.unidade}"  converter="${unidadeConverter}">
+            <p:selectOneMenu value="${bemController.entidade.unidade}" required="true" converter="${unidadeConverter}">
                 <f:selectItems value="${bemController.listagemUnidades}" />
             </p:selectOneMenu>
 
             <h:outputLabel value="Tipo de Aquisição*:" />           
-            <p:selectOneMenu value="${bemController.entidade.tipo}">
-                <f:selectItems value="#" />
+            <p:selectOneMenu value="${bemController.entidade.tipo}" required="true" converter="${tipoAquisicaoConverter}">
+                <f:selectItems value="${bemController.listagemTipoAq}" />
             </p:selectOneMenu>
 
              <h:outputLabel value="Funcionário*:" />           
-             <p:selectOneMenu value="${bemController.entidade.funcionario}" converter="${funcionarioConverter}">
+             <p:selectOneMenu value="${bemController.entidade.funcionario}" required="true" converter="${funcionarioConverter}">
                  <f:selectItems value="${bemController.listagemfuncionarios}" />
             </p:selectOneMenu>    
              
             <h:outputLabel value="Estado de Conservação*:" />           
-            <p:selectOneMenu value="${bemController.entidade.estadoCons}" converter="${estadoCConverter}">
+            <p:selectOneMenu value="${bemController.entidade.estadoCons}" required="true" converter="${estadoCConverter}">
                 <f:selectItems value="${bemController.listagemEstadosC}" />
             </p:selectOneMenu>
                 
             <h:outputLabel value="Local*:" />           
-            <p:selectOneMenu value="${bemController.entidade.local}">
+            <p:selectOneMenu value="${bemController.entidade.local}" required="true" converter="${localConverter}">
                 <f:selectItems value="${bemController.listagemlocais}" />
             </p:selectOneMenu>      
                 
@@ -57,13 +57,11 @@
             label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>
                 
         </h:panelGrid>
-        <br/>
         (*) Campos de Preenchimento Obrigatório
-        <br/><br/>
         <p:panel id="Rodape">
             <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
             <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-            <p:commandButton value="Voltar para listagem" ajax="false" action="${bemController.voltar()}" />
+            <p:commandButton value="Cancelar" ajax="false" action="${bemController.voltar()}" />
         </p:panel>       
         <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                          severity="alert" widgetVar="msgSalvar">

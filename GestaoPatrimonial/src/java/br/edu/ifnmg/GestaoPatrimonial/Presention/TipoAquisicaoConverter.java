@@ -4,7 +4,8 @@
  */
 package br.edu.ifnmg.GestaoPatrimonial.Presention;
 
-import br.edu.ifnmg.GestaoPatrimonial.DomainModel.EstadoConservacao;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoAquisicao;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Unidade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -16,35 +17,34 @@ import javax.faces.convert.Converter;
  *
  * @author veronica
  */
-@Named(value = "estadoCConverter")
+@Named(value = "tipoAquisicaoConverter")
 @SessionScoped
-public class EstadoCConverter implements Serializable, Converter {
+public class TipoAquisicaoConverter implements Serializable, Converter {
 
     /**
-     * Creates a new instance of EstadoCConverter
+     * Creates a new instance of TipoAquisicaoConverter
      */
-    public EstadoCConverter() {
+    public TipoAquisicaoConverter() {
     }
 
     @Override
+    //Converter de String para valor
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if (value == null || value.trim().equals("")) {
             return null;
         } else {
-            return EstadoConservacao.valueOf(value);
-
+            return TipoAquisicao.valueOf(value);
         }
-
     }
 
-
     @Override
+    //Converter o valor para String
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        if(value == null || value.toString().equals("")){
-            return "";   
-        }else{
-            EstadoConservacao ec = (EstadoConservacao) value;
-            return ec.toString();
+        if (value == null || value.toString().equals("")) {
+            return "";
+        } else {
+            TipoAquisicao ta = (TipoAquisicao) value;
+            return ta.toString();
         }
-        }
+    }
 }

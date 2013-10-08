@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
         
@@ -13,10 +14,11 @@
                 
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Número*:" />
-                    <p:inputText label="Número" value="${contaPatrimonialController.entidade.conta}">
+                    <p:inputText label="Número" value="${contaPatrimonialController.entidade.conta}" required="true">
+                        <f:convertNumber integerOnly="true" />
                     </p:inputText>
                     <h:outputLabel value="Descrição*:" />
-                    <p:inputText  label="Descrição" value="${contaPatrimonialController.entidade.descricao}"/>
+                    <p:inputText  label="Descrição" value="${contaPatrimonialController.entidade.descricao}"  required="true" />
                         
                 </h:panelGrid>
                 <br/>
@@ -25,7 +27,7 @@
                 <p:panel>
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                     <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-                    <p:commandButton value="Voltar para listagem" ajax="false" action="${contaPatrimonialController.voltar()}" />
+                    <p:commandButton value="Cancelar" ajax="false" action="${contaPatrimonialController.voltar()}" />
                 </p:panel>        
                 <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgSalvar">

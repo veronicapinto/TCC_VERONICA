@@ -6,6 +6,7 @@ package br.edu.ifnmg.GestaoPatrimonial.Presention;
 
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ContaPatrimonial;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IContaPatrimonialRepositorio;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -24,11 +25,8 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class ContaPatrimonialController implements Serializable {
 
-   
     ContaPatrimonial entidade;
-    
     ContaPatrimonial filtro;
-    
     List<ContaPatrimonial> listagem;
     @EJB
     IContaPatrimonialRepositorio dao;
@@ -41,17 +39,6 @@ public class ContaPatrimonialController implements Serializable {
         filtro = new ContaPatrimonial();
     }
 
-    public void validarEspacoBranco(FacesContext contexto, UIComponent componente, Object valor) {
-        String valorString = (String) valor;
-        if (valorString.trim().equals("")) {
-            ((UIInput) componente).setValid(false);
-            String mensagem = componente.getAttributes().get("label")
-                    + ":Valor Inválido, preencha com cracteres diferentes de espaço. ";
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, mensagem);
-            contexto.addMessage(componente.getClientId(contexto), facesMessage);
-        }
-    }
-
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(msg));
@@ -61,32 +48,32 @@ public class ContaPatrimonialController implements Serializable {
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Salvo com Sucesso!");
-         
     }
-    
-    public String editar(){
+
+    public String editar() {
         return "ContaPatrimonialEditar.xhtml";
     }
-    
-    public String criar(){
+
+    public String criar() {
         entidade = new ContaPatrimonial();
         return "ContaPatrimonialEditar.xhtml";
     }
-    
-    public String apagar(){
+
+    public String apagar() {
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
         return "ContaPatrimonialListagem.xhtml";
     }
-    
-    public String filtrar(){
+
+    public String filtrar() {
         listagem = dao.Buscar(filtro);
         return "ContaPatrimonialListagem.xhtml";
+
     }
-    
-    public String voltar(){
-        listagem =null;
+
+    public String voltar() {
+        listagem = null;
         return "ContaPatrimonialListagem.xhtml";
     }
 
@@ -99,7 +86,7 @@ public class ContaPatrimonialController implements Serializable {
     }
 
     public List<ContaPatrimonial> getListagem() {
-        if(listagem == null){
+        if (listagem == null) {
             ContaPatrimonial filtro = new ContaPatrimonial();
             listagem = dao.Buscar(filtro);
         }
@@ -118,5 +105,4 @@ public class ContaPatrimonialController implements Serializable {
     public void setFiltro(ContaPatrimonial filtro) {
         this.filtro = filtro;
     }
-    
 }

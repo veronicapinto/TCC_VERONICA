@@ -94,7 +94,7 @@ public class Funcionario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.GestaoPatrimonial.DomainModel.Funcionario[ id=" + id + " ]";
+        return nome;
     }
     
 }

@@ -31,8 +31,7 @@ public class UnidadeConverter implements Serializable, Converter {
        if(value ==null || value.trim().equals("")) {
            return null;
        }else{
-           Long id = Long.parseLong(value);
-           return Unidade.values();
+           return Unidade.valueOf(value);
        }
     }
 
@@ -42,7 +41,7 @@ public class UnidadeConverter implements Serializable, Converter {
             return "";
         }else{
             Unidade u = (Unidade) value;
-            return u.values().toString();
+            return u.toString();
         }
     }
 }

@@ -72,7 +72,7 @@ public class ContaPatrimonial implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.GestaoPatrimonial.DomainModel.ContaPatrimonial[ id=" + id + " ]";
+        return conta.toString() + " - " + descricao;
     }
     
 }

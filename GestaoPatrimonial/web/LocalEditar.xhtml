@@ -14,10 +14,10 @@
                 
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Descrição*:" />
-                    <p:inputText value="${localController.entidade.descricao}" />
+                    <p:inputText value="${localController.entidade.descricao}" required="true"/>
                         
                     <h:outputLabel value="Cidade:" />
-                    <p:inputText value="${localController.entidade.cidade}" />
+                    <p:inputText value="${localController.entidade.cidade}" required="true"/>
                         
                     Estado*:<br/>
                     <p:selectOneMenu value="#{localController.entidade.estado}" label="Estado"
@@ -52,7 +52,7 @@
                     </p:selectOneMenu>
                         
                     <h:outputLabel value="Endereço:" />                   
-                    <p:inputText value="${localController.entidade.endereco}" style="width: 300px"/>            
+                    <p:inputText value="${localController.entidade.endereco}" required="true" style="width: 300px"/>            
                 </h:panelGrid>
                 <br/>
                 (*) Campos de Preenchimento Obrigatório
@@ -60,7 +60,7 @@
                 <p:panel id="Rodape">
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                     <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-                    <p:commandButton value="Voltar para listagem" ajax="false" action="${localController.voltar()}" />
+                    <p:commandButton value="Cancelar" ajax="false" action="${localController.voltar()}" />
                 </p:panel>       
                 <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgSalvar">

@@ -26,6 +26,7 @@ public class Local implements Serializable {
     private String cidade;
     private String endereco;
 
+    //Get e Set...
     public Long getId() {
         return id;
     }
@@ -66,8 +67,6 @@ public class Local implements Serializable {
         this.endereco = endereco;
     }
 
-   
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -90,7 +89,6 @@ public class Local implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.GestaoPatrimonial.DomainModel.Local[ id=" + id + " ]";
+        return descricao;
     }
-    
 }
