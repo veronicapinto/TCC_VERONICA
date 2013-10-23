@@ -27,7 +27,7 @@
                 <p:panel>
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                     <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-                    <p:commandButton value="Cancelar" ajax="false" action="${contaPatrimonialController.voltar()}" />
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${contaPatrimonialController.voltar()}" />
                 </p:panel>        
                 <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgSalvar">

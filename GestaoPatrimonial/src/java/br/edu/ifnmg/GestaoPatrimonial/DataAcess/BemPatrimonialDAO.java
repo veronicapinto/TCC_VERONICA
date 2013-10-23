@@ -40,7 +40,7 @@ public class BemPatrimonialDAO
         if(obj!=null)
             
         if (obj.getConta() != null && obj.getConta().toString().length() > 0) {
-            filtro += " b.conta =: conta";
+            filtro += " b.conta=:conta";
             parametros.put("conta", obj.getConta());
         }
 
@@ -48,7 +48,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.descricao =:descricao ";
+            filtro += " b.descricao=:descricao ";
             parametros.put("descricao", obj.getDescricao());
         }
 
@@ -57,7 +57,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.estadoCons =:estadoCons";
+            filtro += " b.estadoCons=:estadoCons";
             parametros.put("estadoCons", obj.getEstadoCons());
         }
 
@@ -65,7 +65,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.funcionario =:funcionario";
+            filtro += " b.funcionario=:funcionario";
             parametros.put("funcionario", obj.getFuncionario());
         }
 
@@ -81,7 +81,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.local =:local";
+            filtro += " b.local=:local";
             parametros.put("local", obj.getLocal());
         }
 
@@ -89,14 +89,14 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.quantidade=: quantidade";
+            filtro += " b.quantidade=:quantidade";
             parametros.put("quantidade", obj.getQuantidade());
         }
         if (obj.getTipo() != null && obj.getTipo().toString().length() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.tipo =:tipo";
+            filtro += " b.tipo=:tipo";
             parametros.put("tipo", obj.getTipo());
         }
 
@@ -104,14 +104,14 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro = " b.unidade =:unidade";
+            filtro = " b.unidade=:unidade";
             parametros.put("unidade", obj.getUnidade());
         }
         if (obj.getValor() != 0 && obj.getValor() > 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.valor =:valor";
+            filtro += " b.valor=:valor";
             parametros.put("valor", obj.getValor());
         }
 
@@ -120,7 +120,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.data =:data";
+            filtro += " b.data=:data";
             parametros.put("data", obj.getData());
         }
 
@@ -128,7 +128,7 @@ public class BemPatrimonialDAO
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
             }
-            filtro += " b.dataAquisicao =:dataAquisicao ";
+            filtro += " b.dataAquisicao=:dataAquisicao ";
             parametros.put("dataAquisicao", obj.getDataAquisicao());
         }
 

@@ -7,61 +7,89 @@
                 xmlns:f="http://java.sun.com/jsf/core">
                     
     <ui:define name="content">
-        <h:panelGrid columns="2">
+        <p:tabView id="tabView"> 
             
-            <h:outputLabel value="Descrição*:" />
-            <p:inputText size="35" value="${bemController.entidade.descricao}" required="true"/>
-                
-            <h:outputLabel value="Conta*:" />           
-            <p:selectOneMenu value="${bemController.entidade.conta}" required="true" converter="${contaPatrimonialConverter}">
-                <f:selectItems value="${bemController.listagemcontas}" />
-            </p:selectOneMenu>
+            <p:tab id="tab1" title="Dados Gerais">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Descrição*:" />
+                    <p:inputText size="35" value="${bemController.entidade.descricao}" required="true"/>                      
                         
-            <h:outputLabel value="Valor*:" />
-            <p:inputText value="${bemController.entidade.valor}" required="true"/>
+                    <h:outputLabel value="Conta*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.conta}" required="true" converter="${contaPatrimonialConverter}">
+                        <f:selectItems value="${bemController.listagemcontas}" />
+                    </p:selectOneMenu>
+                        
+                    <h:outputLabel value="Valor*:" />
+                    <p:inputText value="${bemController.entidade.valor}" required="true"/>
+                        
+                    <h:outputLabel value="Quantidade*:" />
+                    <p:inputText value="${bemController.entidade.quantidade}" required="true" />
+                        
+                    <h:outputLabel value="Unidade*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.unidade}" required="true" converter="${unidadeConverter}">
+                        <f:selectItems value="${bemController.listagemUnidades}" />
+                    </p:selectOneMenu>
+                        
+                    <h:outputLabel value="Estado de Conservação*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.estadoCons}" required="true" converter="${estadoCConverter}">
+                        <f:selectItems value="${bemController.listagemEstadosC}" />
+                    </p:selectOneMenu>
+                        
+                    <h:outputLabel value="Local*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.local}" required="true" converter="${localConverter}">
+                        <f:selectItems value="${bemController.listagemlocais}" />
+                    </p:selectOneMenu>      
+                        
+                </h:panelGrid>
+            </p:tab>
                 
-            <h:outputLabel value="Quantidade*:" />
-            <p:inputText value="${bemController.entidade.quantidade}" required="true" />
+            <p:tab id="tab1" title="Aquisição">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Tipo de Aquisição*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.tipo}" required="true" converter="${tipoAquisicaoConverter}">
+                        <f:selectItems value="${bemController.listagemTipoAq}" />
+                    </p:selectOneMenu>
+                        
+                    <h:outputLabel value="Funcionário*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.funcionario}" required="true" converter="${funcionarioConverter}">
+                        <f:selectItems value="${bemController.listagemfuncionarios}" />
+                    </p:selectOneMenu>    
+                        
+                    <h:outputLabel value="Data de Aquisição*:"/>
+                    <p:calendar value="${bemController.entidade.dataAquisicao}" required="true" 
+                    label="Data de Aquisição" pattern="dd/MM/yyyy" locale="pt_BR"/>
+                        
+                    <h:outputLabel value="Data*:"/>
+                    <p:calendar value="${bemController.entidade.data}" required="true" 
+                                label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>                    
+                </h:panelGrid>
+            </p:tab>
+                
+            <p:tab id="tab1" title="Baixa">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Motivo Baixa*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.motivo}" required="true" converter="${MotivoBaixaConverter}">
+                        <f:selectItems value="${bemController.listagemMotivos}" />
+                    </p:selectOneMenu>
 
-            <h:outputLabel value="Unidade*:" />           
-            <p:selectOneMenu value="${bemController.entidade.unidade}" required="true" converter="${unidadeConverter}">
-                <f:selectItems value="${bemController.listagemUnidades}" />
-            </p:selectOneMenu>
+                    <h:outputLabel value="Funcionário Baixa*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.funcionarioBaixa}" required="true" converter="${funcionarioConverter}">
+                        <f:selectItems value="${bemController.listagemfuncionarios}" />
+                    </p:selectOneMenu>    
 
-            <h:outputLabel value="Tipo de Aquisição*:" />           
-            <p:selectOneMenu value="${bemController.entidade.tipo}" required="true" converter="${tipoAquisicaoConverter}">
-                <f:selectItems value="${bemController.listagemTipoAq}" />
-            </p:selectOneMenu>
-
-             <h:outputLabel value="Funcionário*:" />           
-             <p:selectOneMenu value="${bemController.entidade.funcionario}" required="true" converter="${funcionarioConverter}">
-                 <f:selectItems value="${bemController.listagemfuncionarios}" />
-            </p:selectOneMenu>    
-             
-            <h:outputLabel value="Estado de Conservação*:" />           
-            <p:selectOneMenu value="${bemController.entidade.estadoCons}" required="true" converter="${estadoCConverter}">
-                <f:selectItems value="${bemController.listagemEstadosC}" />
-            </p:selectOneMenu>
-                
-            <h:outputLabel value="Local*:" />           
-            <p:selectOneMenu value="${bemController.entidade.local}" required="true" converter="${localConverter}">
-                <f:selectItems value="${bemController.listagemlocais}" />
-            </p:selectOneMenu>      
-                
-            <h:outputLabel value="Data de Aquisição*:"/>
-            <p:calendar value="${bemController.entidade.dataAquisicao}" required="true" 
-            label="Data de Aquisição" pattern="dd/MM/yyyy" locale="pt_BR"/>
- 
-            <h:outputLabel value="Data*:"/>
-            <p:calendar value="${bemController.entidade.data}" required="true" 
-            label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>
-                
-        </h:panelGrid>
+                    <h:outputLabel value="Data Baixa*:"/>
+                    <p:calendar value="${bemController.entidade.dataBaixa}" required="true" 
+                                label="Data Baixa" pattern="dd/MM/yyyy" locale="pt_BR"/>  
+                </h:panelGrid>
+                    
+            </p:tab>
+        </p:tabView>                     
+        
         (*) Campos de Preenchimento Obrigatório
         <p:panel id="Rodape">
             <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
             <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-            <p:commandButton value="Cancelar" ajax="false" action="${bemController.voltar()}" />
+            <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${bemController.voltar()}" />
         </p:panel>       
         <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                          severity="alert" widgetVar="msgSalvar">
@@ -79,4 +107,3 @@
     </ui:define>
 
 </ui:composition>
-    

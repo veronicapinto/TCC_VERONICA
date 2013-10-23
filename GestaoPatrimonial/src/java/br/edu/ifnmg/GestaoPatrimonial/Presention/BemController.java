@@ -13,6 +13,7 @@ import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IContaPatrimonialRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IFuncionarioRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ILocalRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Local;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.MotivoBaixa;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoAquisicao;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Unidade;
 import javax.inject.Named;
@@ -40,6 +41,7 @@ public class BemController implements Serializable {
     List<Funcionario> listagemfuncionarios;
     List<Local> listagemlocais;
     Unidade[] listagemUnidades;
+    MotivoBaixa [] listagemMotivos;
     EstadoConservacao[] listagemEstadosC;
     TipoAquisicao[] listagemTipoAq;
     @EJB
@@ -176,7 +178,18 @@ public class BemController implements Serializable {
     public void setListagemUnidades(Unidade[] listagemUnidades) {
         this.listagemUnidades = listagemUnidades;
     }
+  
+    public MotivoBaixa[] getListagemMotivos() {
+        if (listagemMotivos == null){
+            listagemMotivos = MotivoBaixa.values();
+        }
+        return listagemMotivos;
+    }
 
+    public void setListagemMotivos(MotivoBaixa[] listagemMotivos) {
+        this.listagemMotivos = listagemMotivos;
+    }    
+  
     public EstadoConservacao[] getListagemEstadosC() {
         if (listagemEstadosC == null) {
             listagemEstadosC = EstadoConservacao.values();

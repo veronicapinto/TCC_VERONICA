@@ -27,7 +27,7 @@
                         <p:commandButton ajax="false" value="Nova Conta" action="${contaPatrimonialController.criar()}" />
                     </f:facet>  
                 </p:panelGrid>
-                <p:dataTable value="${contaPatrimonialController.listagem}" var="item">
+                <p:dataTable value="${contaPatrimonialController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
                     <p:column sortBy="conta" headerText="Conta">
                         ${item.conta}
                     </p:column>

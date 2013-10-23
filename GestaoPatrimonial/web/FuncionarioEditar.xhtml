@@ -33,7 +33,7 @@
                 <p:panel id="Rodape">
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                     <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-                    <p:commandButton value="Cancelar" ajax="false" action="${funcionarioController.voltar()}" />
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${funcionarioController.voltar()}" />
                 </p:panel>       
                 <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgSalvar">

@@ -32,7 +32,7 @@
                         <p:commandButton ajax="false" value="Novo Funcionário" action="${funcionarioController.criar()}" />
                     </f:facet>  
                 </p:panelGrid>
-                <p:dataTable value="${funcionarioController.listagem}" var="item">
+                <p:dataTable value="${funcionarioController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
                     <p:column sortBy="nome" headerText="Nome">
                         ${item.nome}
                     </p:column>

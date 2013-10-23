@@ -40,13 +40,13 @@ public class FuncionarioDAO
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " f.nome =:nome ";
+                filtro += " f.nome=:nome ";
                 parametros.put("nome", obj.getNome());
             }
 
             if (obj.getLogin() != null && obj.getLogin().length() > 0) {
                 if (filtro.length() > 0) {
-                    filtro += filtro + " and ";
+                    filtro += " and ";
                 }
                 filtro += " f.login=:login ";
                 parametros.put("login", obj.getLogin());
@@ -56,7 +56,7 @@ public class FuncionarioDAO
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " f.id =: id";
+                filtro += " f.id =:id";
                 parametros.put("id", obj.getId());
             }
 
@@ -64,7 +64,7 @@ public class FuncionarioDAO
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " f.senha =: senha";
+                filtro += " f.senha=:senha";
                 parametros.put("senha", obj.getSenha());
             }
 
@@ -72,7 +72,7 @@ public class FuncionarioDAO
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " f.tipo =:tipo ";
+                filtro += " f.tipo=:tipo ";
                 parametros.put("tipo", obj.getTipo());
             }
             // Se houver filtros, coloca o "where" na consulta
