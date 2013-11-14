@@ -9,7 +9,7 @@
     <ui:define name="content">
         <p:tabView id="tabView"> 
             
-            <p:tab id="tab1" title="Dados Gerais">
+            <p:tab title="Dados Gerais">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Descrição*:" />
                     <p:inputText size="35" value="${bemController.entidade.descricao}" required="true"/>                      
@@ -43,7 +43,7 @@
                 </h:panelGrid>
             </p:tab>
                 
-            <p:tab id="tab1" title="Aquisição">
+            <p:tab  title="Aquisição">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Tipo de Aquisição*:" />           
                     <p:selectOneMenu value="${bemController.entidade.tipo}" required="true" converter="${tipoAquisicaoConverter}">
@@ -65,20 +65,26 @@
                 </h:panelGrid>
             </p:tab>
                 
-            <p:tab id="tab1" title="Baixa">
+            <p:tab   rendered="#{bemController.entidade.id > 0}" title="Baixa">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Motivo Baixa*:" />           
-                    <p:selectOneMenu value="${bemController.entidade.motivo}" required="true" converter="${MotivoBaixaConverter}">
+                    <h:outputLabel value="Motivo de Baixa:" />           
+                    <p:selectOneMenu value="${bemController.entidade.motivo}" converter="${MotivoBaixaConverter}">
                         <f:selectItems value="${bemController.listagemMotivos}" />
+                        <p:ajax process="@all" render="labelLeilao selectLeilao" />
                     </p:selectOneMenu>
 
-                    <h:outputLabel value="Funcionário Baixa*:" />           
-                    <p:selectOneMenu value="${bemController.entidade.funcionarioBaixa}" required="true" converter="${funcionarioConverter}">
+                    <h:outputLabel value="Funcionário:" />           
+                    <p:selectOneMenu value="${bemController.entidade.funcionarioBaixa}" converter="${funcionarioConverter}">
                         <f:selectItems value="${bemController.listagemfuncionarios}" />
-                    </p:selectOneMenu>    
+                    </p:selectOneMenu>  
+                    
+                    <h:outputLabel id="labelLeilao" rendered="#{bemController.entidade.motivo == 'Leilao'}" value="Número do Leilão:" />           
+                    <p:selectOneMenu  id="selectLeilao" rendered="#{bemController.entidade.motivo == 'Leilao'}" value="${bemController.entidade.leilao}" converter="${leilaoConverter}">
+                        <f:selectItems value="${bemController.listagemBensLeiloados}" />
+                    </p:selectOneMenu>  
 
-                    <h:outputLabel value="Data Baixa*:"/>
-                    <p:calendar value="${bemController.entidade.dataBaixa}" required="true" 
+                    <h:outputLabel value="Data Baixa:"/>
+                    <p:calendar value="${bemController.entidade.dataBaixa}" 
                                 label="Data Baixa" pattern="dd/MM/yyyy" locale="pt_BR"/>  
                 </h:panelGrid>
                     
@@ -88,7 +94,7 @@
         (*) Campos de Preenchimento Obrigatório
         <p:panel id="Rodape">
             <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
-            <p:commandButton value="Remover" onclick="msgRemover.show()"/>
+            <p:commandButton rendered="#{bemController.entidade.id > 0}" value="Remover" onclick="msgRemover.show()"/>
             <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${bemController.voltar()}" />
         </p:panel>       
         <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"

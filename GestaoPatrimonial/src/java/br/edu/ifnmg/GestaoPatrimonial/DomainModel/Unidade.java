@@ -9,7 +9,6 @@ package br.edu.ifnmg.GestaoPatrimonial.DomainModel;
  * @author veronica
  */
 public enum Unidade {
-    Caixa,
-    Pacote,
-    Unidade    
+
+    Unidade
 }

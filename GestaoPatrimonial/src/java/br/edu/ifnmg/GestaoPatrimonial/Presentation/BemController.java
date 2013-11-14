@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.GestaoPatrimonial.Presention;
+package br.edu.ifnmg.GestaoPatrimonial.Presentation;
 
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.BemPatrimonial;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ContaPatrimonial;
@@ -11,7 +11,9 @@ import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Funcionario;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IBemPatrimonialRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IContaPatrimonialRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IFuncionarioRepositorio;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ILeilaoRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ILocalRepositorio;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Leilao;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Local;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.MotivoBaixa;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoAquisicao;
@@ -40,10 +42,13 @@ public class BemController implements Serializable {
     List<ContaPatrimonial> listagemcontas;
     List<Funcionario> listagemfuncionarios;
     List<Local> listagemlocais;
+    List<Leilao> listagemBensLeiloados;
     Unidade[] listagemUnidades;
     MotivoBaixa [] listagemMotivos;
     EstadoConservacao[] listagemEstadosC;
     TipoAquisicao[] listagemTipoAq;
+    @EJB
+    ILeilaoRepositorio daoLeilao;    
     @EJB
     IBemPatrimonialRepositorio dao;
     @EJB
@@ -167,6 +172,20 @@ public class BemController implements Serializable {
         this.listagemlocais = listagemlocais;
     }
 
+    public List<Leilao> getListagemBensLeiloados() {
+        if(listagemBensLeiloados == null) {
+            BemPatrimonial filtro = new BemPatrimonial();
+            listagemBensLeiloados = daoLeilao.Buscar(null);
+        }
+        return listagemBensLeiloados;
+    }
+
+    public void setListagemBensLeiloados(List<Leilao> listagemBensLeiloados) {
+        this.listagemBensLeiloados = listagemBensLeiloados;
+    }
+    
+    
+
     //GET e SET das enumerações...
     public Unidade[] getListagemUnidades() {
         if (listagemUnidades == null) {
@@ -211,4 +230,8 @@ public class BemController implements Serializable {
     public void setListagemTipoAq(TipoAquisicao[] listagemTipoAq) {
         this.listagemTipoAq = listagemTipoAq;
     }
+    
 }
+
+
+

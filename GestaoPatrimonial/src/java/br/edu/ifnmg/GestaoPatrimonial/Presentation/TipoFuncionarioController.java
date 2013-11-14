@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.GestaoPatrimonial.Presention;
+package br.edu.ifnmg.GestaoPatrimonial.Presentation;
 
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ITipoFuncionarioRepositorio;
 import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoFuncionario;

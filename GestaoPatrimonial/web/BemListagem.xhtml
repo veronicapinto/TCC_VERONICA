@@ -63,11 +63,15 @@
             </p:column>
 
             <p:column sortBy="dataAq" headerText=" Data de Aquisição">
-                ${item.dataAquisicao}
+                <h:outputText value="${item.dataAquisicao}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR" />
+                </h:outputText>
             </p:column>
 
             <p:column sortBy="data" headerText="Data">
-                ${item.data}
+                <h:outputText value="${item.data}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                </h:outputText>
             </p:column>
 
             <p:column headerText="Editar">

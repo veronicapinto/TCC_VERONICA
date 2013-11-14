@@ -8,8 +8,13 @@ package br.edu.ifnmg.GestaoPatrimonial.DomainModel;
  *
  * @author veronica
  */
- public enum EstadoConservacao{
-        Bom, 
-        Ruim,
-        Ótimo
-    }
+public enum EstadoConservacao {
+
+    Novo,
+    Bom,
+    Precario,
+    Recuperavel,
+    Inservivel,
+    Irrecuperavel,
+    Antieconomico
+}

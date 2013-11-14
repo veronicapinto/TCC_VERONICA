@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./TemplateGeral.xhtml">
+            <ui:define name="content">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Número do Lelão*:" />
+                    <p:inputText size="35" value="${leilaoController.entidade.numeroLeilao}" required="true" />
+
+                    
+
+                    <h:outputLabel value="Valor do Arremate*:" />
+                    <p:inputText size="35" value="${leilaoController.entidade.valorBemLeiloado}" required="true" />
+
+                    <h:outputLabel value="Nome do Arrematante*:" />
+                    <p:inputText size="35" value="${leilaoController.entidade.arrematante}" required="true" />
+
+                    <h:outputLabel value="Data do Leilão*:"/>
+                    <p:calendar value="${leilaoController.entidade.dataLeilao}" required="true" 
+                                label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>  
+                </h:panelGrid>
+                <br/>
+                
+                (*) Campos de Preenchimento Obrigatório
+                <br/><br/>
+                <p:panel id="Rodape">
+                    <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                    <p:commandButton value="Remover" rendered="#{leilaoController.entidade.id > 0}" onclick="msgRemover.show()"/>
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${leilaoController.voltar()}" />
+                </p:panel>       
+                <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                                 severity="alert" widgetVar="msgSalvar">
+                    <p:commandButton ajax="false" value="SIM" action="${leilaoController.salvar()}" />
+                    <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
+                </p:confirmDialog>
+
+                <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
+                                 severity="alert" widgetVar="msgRemover">
+                    <p:commandButton ajax="false" value="SIM" action="${leilaoController.apagar()}" />
+                    <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+
+                </p:confirmDialog>                  
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

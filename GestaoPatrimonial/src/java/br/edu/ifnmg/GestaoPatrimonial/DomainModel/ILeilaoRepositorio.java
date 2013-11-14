@@ -11,7 +11,6 @@ import javax.ejb.Remote;
  * @author veronica
  */
 @Remote
-public interface IEmprestimoRepositorio
-    extends IRepositorio<Emprestimo>{
-    
+public interface ILeilaoRepositorio
+        extends IRepositorio<Leilao> {
 }

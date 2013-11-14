@@ -18,25 +18,33 @@
             <img src="resources/img/ifnmg.png"/>
             <div id="textop" align="center">
                 <h3>Sistema de Gestão Patrimonial</h3>
-        </div>
+            </div>
         </div>
         <h:form>
             <p:growl id="growl" showDetail="true" sticky="true" />   
             <p:menubar>
-                 <p:menuitem value="Login" icon="ui-icon-key" />  
+                <p:menuitem value="Login" icon="ui-icon-key" />  
                 <p:submenu label="Cadastros" icon="ui-icon-pencil">  
                     <p:menuitem value="Conta Patrimonial" url="ContaPatrimonialListagem.xhtml" />                    
-                    <p:menuitem value="Funcionário" url="FuncionarioListagem.xhtml"  />  
-                    <p:menuitem value="Local do Bem" url="LocalListagem.xhtml" />
+                    <p:menuitem value="Funcionário" url="FuncionarioListagem.xhtml"  /> 
                     <p:menuitem value="Tipo de Funcionário" url="TipoFuncionarioListagem.xhtml"  />  
+                    <p:menuitem value="Local do Bem" url="LocalListagem.xhtml" />
+                    <p:menuitem value="Leilão" url="LeilaoListagem.xhtml"  />  
+
                 </p:submenu>
-                <p:menuitem value="Gerenciar Bens" url="BemListagem.xhtml"  /> 
-                              
+                <p:menuitem value="Gerenciar Bens" url="BemListagem.xhtml"  icon="ui-icon-pencil"/> 
+
+
+                <p:submenu label="Transferências" icon="ui-icon-pencil">  
+                </p:submenu>
                 
                 <p:submenu label="Relatórios" icon="ui-icon-note">  
                 </p:submenu>
+                
+               
+                
             </p:menubar>
-            
+
             <div id="content" class="center_content">
                 <ui:insert name="content">Content</ui:insert>
             </div>

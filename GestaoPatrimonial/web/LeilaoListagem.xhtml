@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./TemplateGeral.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="content">
+        <p:panelGrid columns="2">
+            <f:facet name="header">
+                Filtros
+            </f:facet>
+            <h:outputLabel value="Número do Leilão"/>
+            <p:inputText value="${leilaoController.filtro.numeroLeilao}" />
+
+            <f:facet name="footer">
+                <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${leilaoController.filtrar()}" style="margin: 0"/>
+                <p:commandButton ajax="false" value="Novo Leilão " action="${leilaoController.criar()}"/>
+            </f:facet>
+        </p:panelGrid>
+
+        <p:dataTable value="${leilaoController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+            <p:column sortBy="numero" headerText="Número do Leilão">
+                ${item.numeroLeilao}
+            </p:column>
+
+            <p:column sortBy="bensLeiloados" headerText="Bens Leiloados">
+                ${item.bensLeiloados}
+            </p:column>
+
+            <p:column sortBy="arrematante" headerText="Arrematante do Bem">
+                ${item.arrematante}
+            </p:column>             
+
+                    <p:column sortBy="valor" headerText="Valor do bem Leiloado">
+                        ${item.valorBemLeiloado}
+                    </p:column>
+
+                    <p:column sortBy="dataLeilao" headerText="Data do Leilão" >
+                        <h:outputText value="${item.dataLeilao}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${leilaoController.editar()}">
+                            <f:setPropertyActionListener target="${leilaoController.entidade}" value="${item}"/>
+                        </p:commandButton>
+                    </p:column>
+                    
+        </p:dataTable>
+    </ui:define>
+ </ui:composition>
+                    

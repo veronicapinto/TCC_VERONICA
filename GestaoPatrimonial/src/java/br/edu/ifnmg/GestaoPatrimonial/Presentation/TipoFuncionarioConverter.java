@@ -2,13 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.GestaoPatrimonial.Presention;
+package br.edu.ifnmg.GestaoPatrimonial.Presentation;
 
-import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoAquisicao;
-import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Unidade;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ITipoFuncionarioRepositorio;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoFuncionario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -17,34 +18,33 @@ import javax.faces.convert.Converter;
  *
  * @author veronica
  */
-@Named(value = "tipoAquisicaoConverter")
+@Named(value = "tipoFuncionarioConverter")
 @SessionScoped
-public class TipoAquisicaoConverter implements Serializable, Converter {
+public class TipoFuncionarioConverter implements Serializable, Converter {
 
-    /**
-     * Creates a new instance of TipoAquisicaoConverter
-     */
-    public TipoAquisicaoConverter() {
+    @EJB
+    ITipoFuncionarioRepositorio dao;
+
+    public TipoFuncionarioConverter() {
     }
 
     @Override
-    //Converter de String para valor
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if (value == null || value.trim().equals("")) {
             return null;
         } else {
-            return TipoAquisicao.valueOf(value);
+            Long id = Long.parseLong(value);
+            return dao.Abrir(id);
         }
     }
 
     @Override
-    //Converter o valor para String
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         if (value == null || value.toString().equals("")) {
             return "";
         } else {
-            TipoAquisicao ta = (TipoAquisicao) value;
-            return ta.toString();
+            TipoFuncionario tf = (TipoFuncionario) value;
+            return tf.getId().toString();
         }
     }
 }

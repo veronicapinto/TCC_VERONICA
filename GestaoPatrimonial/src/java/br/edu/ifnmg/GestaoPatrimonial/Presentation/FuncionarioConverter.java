@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.GestaoPatrimonial.Presention;
+package br.edu.ifnmg.GestaoPatrimonial.Presentation;
 
-import br.edu.ifnmg.GestaoPatrimonial.DomainModel.ITipoFuncionarioRepositorio;
-import br.edu.ifnmg.GestaoPatrimonial.DomainModel.TipoFuncionario;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.Funcionario;
+import br.edu.ifnmg.GestaoPatrimonial.DomainModel.IFuncionarioRepositorio;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -18,14 +18,17 @@ import javax.faces.convert.Converter;
  *
  * @author veronica
  */
-@Named(value = "tipoFuncionarioConverter")
+@Named(value = "funcionarioConverter")
 @SessionScoped
-public class TipoFuncionarioConverter implements Serializable, Converter {
-
+public class FuncionarioConverter implements Serializable, Converter {
+    
     @EJB
-    ITipoFuncionarioRepositorio dao;
+    IFuncionarioRepositorio daoFuncionario;
 
-    public TipoFuncionarioConverter() {
+    /**
+     * Creates a new instance of FuncionarioConverter
+     */
+    public FuncionarioConverter() {
     }
 
     @Override
@@ -34,17 +37,17 @@ public class TipoFuncionarioConverter implements Serializable, Converter {
             return null;
         } else {
             Long id = Long.parseLong(value);
-            return dao.Abrir(id);
+            return daoFuncionario.Abrir(id);
         }
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        if (value == null || value.toString().equals("")) {
-            return "";
-        } else {
-            TipoFuncionario tf = (TipoFuncionario) value;
-            return tf.getId().toString();
-        }
+      if (value == null || value.toString().equals("")){
+          return "";
+      } else{
+          Funcionario f = (Funcionario)value;
+          return f.getId().toString();
+      } 
     }
 }

@@ -9,7 +9,8 @@ package br.edu.ifnmg.GestaoPatrimonial.DomainModel;
  * @author veronica
  */
 public enum MotivoBaixa {
-    Alienacao,
-    BaixaPorRouboOuFurto
-    
+    Leilao,
+    Doacao,
+    Transferencia,
+    BaixaPorRouboOuFurto    
 }

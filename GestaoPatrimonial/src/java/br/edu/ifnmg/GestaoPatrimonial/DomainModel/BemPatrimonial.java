@@ -35,6 +35,9 @@ public class BemPatrimonial implements Serializable {
     private Local local;
     @ManyToOne
     private Funcionario funcionarioBaixa;
+    
+    @ManyToOne
+    Leilao leilao;
        
     private String descricao;    
     private double valor;    
@@ -96,6 +99,8 @@ public class BemPatrimonial implements Serializable {
     public Funcionario getFuncionarioBaixa() {
         return funcionarioBaixa;
     }
+    
+    
 
     public void setFuncionarioBaixa(Funcionario funcionarioBaixa) {
         this.funcionarioBaixa = funcionarioBaixa;
@@ -205,6 +210,15 @@ public class BemPatrimonial implements Serializable {
         this.dataBaixa = dataBaixa;
     }
 
+    public Leilao getLeilao() {
+        return leilao;
+    }
+
+    public void setLeilao(Leilao leilao) {
+        this.leilao = leilao;
+    }
+
+    
       
     @Override
     public int hashCode() {
