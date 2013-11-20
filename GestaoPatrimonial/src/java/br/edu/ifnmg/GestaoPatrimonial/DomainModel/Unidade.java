@@ -10,5 +10,6 @@ package br.edu.ifnmg.GestaoPatrimonial.DomainModel;
  */
 public enum Unidade {
 
-    Unidade
+    Unidade,
+    Conjunto
 }

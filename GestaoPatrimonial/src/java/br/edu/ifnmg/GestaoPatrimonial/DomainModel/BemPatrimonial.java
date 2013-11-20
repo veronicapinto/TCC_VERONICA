@@ -22,47 +22,40 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class BemPatrimonial implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
     @ManyToOne
-    private Funcionario funcionario;    
-    @ManyToOne 
-    private ContaPatrimonial conta;    
+    private Funcionario funcionario;
+    @ManyToOne
+    private ContaPatrimonial conta;
     @ManyToOne
     private Local local;
     @ManyToOne
     private Funcionario funcionarioBaixa;
-    
     @ManyToOne
     Leilao leilao;
-       
-    private String descricao;    
-    private double valor;    
+    private String descricao;
+    private double valor;
     private Integer quantidade;
-    private String descricaoTipoAq;
-    private String descricaoBaixa;
     private boolean Ativo;
-    
     @Enumerated(EnumType.ORDINAL)
-    private Unidade unidade;    
+    private Unidade unidade;
     @Enumerated(EnumType.ORDINAL)
-    private TipoAquisicao tipo; 
+    private TipoAquisicao tipo;
     @Enumerated(EnumType.ORDINAL)
     private EstadoConservacao estadoCons;
     @Enumerated(EnumType.ORDINAL)
     private MotivoBaixa motivo;
-          
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataAquisicao;    
+    private Date dataAquisicao;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data; 
+    private Date data;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataBaixa;
-    
-   
+
 //Getts e Setts...
     public Long getId() {
         return id;
@@ -99,8 +92,6 @@ public class BemPatrimonial implements Serializable {
     public Funcionario getFuncionarioBaixa() {
         return funcionarioBaixa;
     }
-    
-    
 
     public void setFuncionarioBaixa(Funcionario funcionarioBaixa) {
         this.funcionarioBaixa = funcionarioBaixa;
@@ -128,22 +119,6 @@ public class BemPatrimonial implements Serializable {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
-    }
-
-    public String getDescricaoTipoAq() {
-        return descricaoTipoAq;
-    }
-
-    public void setDescricaoTipoAq(String descricaoTipoAq) {
-        this.descricaoTipoAq = descricaoTipoAq;
-    }
-
-    public String getDescricaoBaixa() {
-        return descricaoBaixa;
-    }
-
-    public void setDescricaoBaixa(String descricaoBaixa) {
-        this.descricaoBaixa = descricaoBaixa;
     }
 
     public boolean isAtivo() {
@@ -218,8 +193,6 @@ public class BemPatrimonial implements Serializable {
         this.leilao = leilao;
     }
 
-    
-      
     @Override
     public int hashCode() {
         int hash = 0;
@@ -244,5 +217,4 @@ public class BemPatrimonial implements Serializable {
     public String toString() {
         return "br.edu.ifnmg.GestaoPatrimonial.DomainModel.Bem[ id=" + id + " ]";
     }
-    
 }

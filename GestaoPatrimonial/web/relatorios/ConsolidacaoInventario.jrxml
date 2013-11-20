@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConsolidacaoInventario" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ca652df4-02a4-4baf-afb1-f51e3cb408ba">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="192"/>
+	<queryString language="SQL">
+		<![CDATA[select C.CONTA, C.DESCRICAO,  SUM (B.VALOR) valor, SUM (B.QUANTIDADE) quantidade
+FROM CONTAPATRIMONIAL C JOIN BEMPATRIMONIAL B
+ON B.CONTA_ID = C.ID
+GROUP BY C.CONTA,C.DESCRICAO]]>
+	</queryString>
+	<field name="CONTA" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESCRICAO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VALOR" class="java.lang.Double"/>
+	<field name="QUANTIDADE" class="java.lang.Integer"/>
+	<group name="CONTA">
+		<groupExpression><![CDATA[$F{CONTA}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="266" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7ce03cff-391d-448c-aa7a-3c98e2de606a" x="29" y="21" width="378" height="23"/>
+				<textElement/>
+				<text><![CDATA[                RELATÓRIO DE CONSOLIDAÇÃO DO INVENTÁRIO DE BENS MÓVEIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f7a1a0ac-2bd6-4565-900c-6822f8f24a83" x="29" y="44" width="378" height="20"/>
+				<textElement/>
+				<text><![CDATA[                       (Decreto nº 45.242/2009, Capítulo IX, Art.51, V)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e426828a-032b-4d19-bbf5-ba940a5c7f36" x="0" y="91" width="378" height="20"/>
+				<textElement/>
+				<text><![CDATA[Escola Estadual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4bcd88e4-2a52-42e6-9bc5-789a7a454511" x="0" y="111" width="381" height="20"/>
+				<textElement/>
+				<text><![CDATA[Código SIAD:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6961434f-ad30-48ea-a06e-e632a5fc0bac" x="62" y="131" width="428" height="20"/>
+				<textElement/>
+				<text><![CDATA[RESUMO ELEMENTO/ITEM DESPESA (EQUIPAMENTOS E MATERIAL PERMANENTE)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2cb06950-3011-4596-bd1c-8e1c4dac6c7c" x="320" y="163" width="170" height="20"/>
+				<textElement/>
+				<text><![CDATA[                 Posição em 30/04/2013]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d42fc3e1-2307-4653-88fe-79a6ac2fdaf4" x="0" y="246" width="425" height="20"/>
+				<textElement/>
+				<text><![CDATA[Na coluna valores é necessário digitar a vírgula separando os decimais.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="81b72135-bbc9-4ef9-9fd1-e1f4ad9bc0c6" x="0" y="2" width="267" height="20"/>
+				<textElement/>
+				<text><![CDATA[Descrição da Conta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1fa8a989-c1af-4e5c-9067-5223700c25c4" x="354" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a2846ec-a5f8-474a-8910-d4ed0b841cfb" x="454" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Valor (em R$)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement uuid="6ef2bbda-0bb1-4eca-950b-1b68d7b5dd7c" x="0" y="0" width="52" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CONTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ceb30fcf-f641-4057-b03b-8c07b6f40e39" x="62" y="0" width="280" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{DESCRICAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02038755-db0e-469d-bdc1-82d3f981ef77" x="354" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{QUANTIDADE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="86382879-9ed7-4809-92d6-db905b07bd03" x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
