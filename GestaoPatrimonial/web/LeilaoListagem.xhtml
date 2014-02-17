@@ -29,31 +29,27 @@ and open the template in the editor.
                 ${item.numeroLeilao}
             </p:column>
 
-            <p:column sortBy="bensLeiloados" headerText="Bens Leiloados">
-                ${item.bensLeiloados}
-            </p:column>
-
-            <p:column sortBy="arrematante" headerText="Arrematante do Bem">
+            <p:column sortBy="arrematante" headerText="Arrematante">
                 ${item.arrematante}
             </p:column>             
 
-                    <p:column sortBy="valor" headerText="Valor do bem Leiloado">
-                        ${item.valorBemLeiloado}
-                    </p:column>
+            <p:column sortBy="valor" headerText="Valor Total">
+                        ${item.valorTotal}
+            </p:column>
 
-                    <p:column sortBy="dataLeilao" headerText="Data do Leilão" >
-                        <h:outputText value="${item.dataLeilao}">
-                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
-                        </h:outputText>
-                    </p:column>
+            <p:column sortBy="dataLeilao" headerText="Data do Leilão" >
+                <h:outputText value="${item.dataLeilao}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                </h:outputText>
+            </p:column>
 
-                    <p:column headerText="Editar">
-                        <p:commandButton value="Editar" ajax="false" action="${leilaoController.editar()}">
-                            <f:setPropertyActionListener target="${leilaoController.entidade}" value="${item}"/>
-                        </p:commandButton>
-                    </p:column>
-                    
+            <p:column headerText="Editar">
+                <p:commandButton value="Editar" ajax="false" action="${leilaoController.editar()}">
+                    <f:setPropertyActionListener target="${leilaoController.entidade}" value="${item}"/>
+                </p:commandButton>
+            </p:column>
+
         </p:dataTable>
     </ui:define>
- </ui:composition>
+</ui:composition>
                     

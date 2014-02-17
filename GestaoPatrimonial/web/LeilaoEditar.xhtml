@@ -12,9 +12,7 @@
             <ui:define name="content">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Número do Lelão*:" />
-                    <p:inputText size="35" value="${leilaoController.entidade.numeroLeilao}" required="true" />
-
-                    
+                    <p:inputText size="35" value="${leilaoController.entidade.numeroLeilao}" required="true" />                 
 
                     <h:outputLabel value="Valor do Arremate*:" />
                     <p:inputText size="35" value="${leilaoController.entidade.valorBemLeiloado}" required="true" />
@@ -28,6 +26,13 @@
                 </h:panelGrid>
                 <br/>
                 
+                <p:tab rendered="#{leilaoController.entidade.id gt 0}" title="Bens Patrimoniais">
+                    <h:panelGrid columns="3" cellpadding="3">
+                        <h:outputText value="Bem:" />
+                        <p:autoComplete converter="#{leilaoConverter}" value="#{leilaoController}" 
+                                         
+                                                
+                                                                      
                 (*) Campos de Preenchimento Obrigatório
                 <br/><br/>
                 <p:panel id="Rodape">

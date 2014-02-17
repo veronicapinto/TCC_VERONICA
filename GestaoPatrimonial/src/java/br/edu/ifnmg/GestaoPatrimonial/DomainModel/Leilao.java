@@ -30,9 +30,25 @@ public class Leilao implements Serializable {
     private List<BemPatrimonial> bensLeiloados;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataLeilao;
-    private double valorBemLeiloado;
+    private double valorTotal;
     private String arrematante;
 
+       public void add(BemPatrimonial bem) {
+        if (!bensLeiloados.contains(bem)) {
+            bensLeiloados.add(bem);
+        }
+        valorTotal = valorTotal + bem.getValor();
+    }
+
+    public void remove(BemPatrimonial bem) {
+        if (bensLeiloados.contains(bem)) {
+            bensLeiloados.remove(bem);
+        }
+        valorTotal = valorTotal - bem.getValor();
+
+
+    }
+    
     //GETS E SETS...
     public Long getId() {
         return id;
@@ -58,12 +74,12 @@ public class Leilao implements Serializable {
         this.bensLeiloados = bensLeiloados;
     }
 
-    public Double getValorBemLeiloado() {
-        return valorBemLeiloado;
+    public Double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setValorBemLeiloado(Double valorBemLeiloado) {
-        this.valorBemLeiloado = valorBemLeiloado;
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public Date getDataLeilao() {

@@ -80,12 +80,12 @@ public class LeilaoDAO
                 parametros.put("bensLeiloados", obj.getBensLeiloados());
             }
 
-            if (obj.getValorBemLeiloado() != 0 && obj.getValorBemLeiloado() > 0) {
+            if (obj.getValorTotal() != 0 && obj.getValorTotal() > 0) {
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
                 filtro += " b.valorBemLeiloado=:valorBemLeiloado";
-                parametros.put("valorBemLeiloado", obj.getValorBemLeiloado());
+                parametros.put("valorBemLeiloado", obj.getValorTotal());
             }
 
             // Se houver filtros, coloca o "where" na consulta

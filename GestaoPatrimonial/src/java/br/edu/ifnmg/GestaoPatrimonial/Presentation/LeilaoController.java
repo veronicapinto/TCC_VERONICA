@@ -33,6 +33,8 @@ public class LeilaoController implements Serializable {
     ILeilaoRepositorio dao;
     @EJB
     IBemPatrimonialRepositorio daoBemPatrimonial;
+    private BemPatrimonial bem;
+    
 
     /**
      * Creates a new instance of LeilaoController
@@ -40,8 +42,10 @@ public class LeilaoController implements Serializable {
     public LeilaoController() {
         entidade = new Leilao();
         filtro = new Leilao();
+      //  bem = new BemPatrimonial();
 
     }
+    
 
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -134,7 +138,29 @@ public class LeilaoController implements Serializable {
     public void setDao(ILeilaoRepositorio dao) {
         this.dao = dao;
     }
+
+    //
+    public void addBem() {
+        entidade.add(bem);
+        salvarBem(bem);
+        bem = new BemPatrimonial();
+
+    }
+    public void removeBem(){
+        entidade.remove(bem);
+        removeBem(bem);
+        
+        bem = new BemPatrimonial();
+        
+    }
+        }
+
+
+
     
     
     
-}
+
+
+
+
