@@ -35,10 +35,7 @@
                 <p:menuitem value="Gerenciar Bens" url="BemListagem.xhtml"  icon="ui-icon-pencil"/> 
 
 
-                <p:submenu label="Transferências" icon="ui-icon-pencil">  
-                </p:submenu>
-                
-                <p:submenu label="Relatórios" icon="ui-icon-note">
+                               <p:submenu label="Relatórios" icon="ui-icon-note">
                     <p:menuitem ajax="false" value="Consolidação de Inventário - PDF" actionListener="#{relatorioController.PDF(actionEvent)}" />
                     <p:menuitem ajax="false" value="Consolidação de Inventário - XLS" actionListener="#{relatorioController.XLS(actionEvent)}" />
                 </p:submenu>

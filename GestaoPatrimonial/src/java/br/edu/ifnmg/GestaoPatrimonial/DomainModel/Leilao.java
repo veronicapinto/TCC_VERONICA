@@ -5,6 +5,7 @@
 package br.edu.ifnmg.GestaoPatrimonial.DomainModel;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -27,8 +28,10 @@ public class Leilao implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer numeroLeilao;
-    @OneToMany(mappedBy = "leilao", fetch= FetchType.LAZY)
+    
+    @OneToMany(mappedBy = "leilao", fetch= FetchType.EAGER)
     private List<BemPatrimonial> bensLeiloados;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataLeilao;
     private double valorTotal;
@@ -48,6 +51,10 @@ public class Leilao implements Serializable {
         valorTotal = valorTotal - bem.getValor();
 
 
+    }
+    
+    public Leilao(){
+        bensLeiloados = new ArrayList<BemPatrimonial>();
     }
     
     //GETS E SETS...

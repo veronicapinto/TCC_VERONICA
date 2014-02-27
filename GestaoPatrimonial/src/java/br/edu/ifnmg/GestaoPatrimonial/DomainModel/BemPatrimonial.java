@@ -35,8 +35,10 @@ public class BemPatrimonial implements Serializable {
     private Local local;
     @ManyToOne
     private Funcionario funcionarioBaixa;
+    
     @ManyToOne
     Leilao leilao;
+    
     private String descricao;
     private double valor;
     private Integer quantidade;

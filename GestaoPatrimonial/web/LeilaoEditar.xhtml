@@ -40,7 +40,7 @@
                             <p:commandButton value="Adicionar" action="#{leilaoController.addBem}" update="tblBens" />
                         </h:panelGrid>
                         <p:dataTable id="tblBens" value="#{leilaoController.entidade.bensLeiloados}"
-                                     var="item" paginator="true" lazy="true">
+                                     var="item" >
                             <p:column headerText="Descrição" sortBy="#{item.descricao}">
                                 #{item.descricao}
                             </p:column>
@@ -48,13 +48,7 @@
                             <p:column headerText="Conta" sortBy="#{item.conta}">
                                 #{item.conta}
                             </p:column>
-
-                            <p:column>
-                                <p:commandButton value="Editar">
-                                    <f:setPropertyActionListener target="#{leilaoController}" value="#{item}" />
-                                </p:commandButton>
-                            </p:column>
-                            <p:column>
+                             <p:column>
                                 <p:commandButton value="Remover" action="#{leilaoController.removeBem}" >
                                     <f:setPropertyActionListener target="#{leilaoController.bem}" value="#{item}"/>
 

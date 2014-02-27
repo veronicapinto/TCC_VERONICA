@@ -72,14 +72,6 @@ public class LeilaoDAO
                 parametros.put("dataLeilao", obj.getDataLeilao());
             }
 
-            if (obj.getBensLeiloados() != null) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " l.bensLeiloados=:bensLeiloados";
-                parametros.put("bensLeiloados", obj.getBensLeiloados());
-            }
-
             if (obj.getValorTotal() != 0 && obj.getValorTotal() > 0) {
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
