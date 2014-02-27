@@ -10,29 +10,60 @@
 
         <ui:composition template="./TemplateGeral.xhtml">
             <ui:define name="content">
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Número do Lelão*:" />
-                    <p:inputText size="35" value="${leilaoController.entidade.numeroLeilao}" required="true" />                 
+                <p:tabView>
+                    <p:tab title="DAdos Gerais">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Número do Lelão*:" />
+                            <p:inputText size="35" value="${leilaoController.entidade.numeroLeilao}" required="true" />                 
 
-                    <h:outputLabel value="Valor do Arremate*:" />
-                    <p:inputText size="35" value="${leilaoController.entidade.valorBemLeiloado}" required="true" />
+                            <h:outputLabel value="Valor do Arremate*:" />
+                            <p:inputText size="35" value="${leilaoController.entidade.valorTotal}" required="true" />
 
-                    <h:outputLabel value="Nome do Arrematante*:" />
-                    <p:inputText size="35" value="${leilaoController.entidade.arrematante}" required="true" />
+                            <h:outputLabel value="Nome do Arrematante*:" />
+                            <p:inputText size="35" value="${leilaoController.entidade.arrematante}" required="true" />
 
-                    <h:outputLabel value="Data do Leilão*:"/>
-                    <p:calendar value="${leilaoController.entidade.dataLeilao}" required="true" 
-                                label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>  
-                </h:panelGrid>
-                <br/>
-                
-                <p:tab rendered="#{leilaoController.entidade.id gt 0}" title="Bens Patrimoniais">
-                    <h:panelGrid columns="3" cellpadding="3">
-                        <h:outputText value="Bem:" />
-                        <p:autoComplete converter="#{leilaoConverter}" value="#{leilaoController}" 
-                                         
-                                                
-                                                                      
+                            <h:outputLabel value="Data do Leilão*:"/>
+                            <p:calendar value="${leilaoController.entidade.dataLeilao}" required="true" 
+                                        label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>  
+                        </h:panelGrid>
+                    </p:tab>
+
+
+                    <p:tab rendered="#{leilaoController.entidade.id gt 0}" title="Bens Patrimoniais">
+                        <h:panelGrid columns="3" cellpadding="2">
+                            <h:outputText value="Bem:" />
+                            <p:autoComplete converter="#{bemPatrimonialConverter}" value="#{leilaoController.bem}"
+                                            completeMethod="#{bemController.autoCompletar}" var="item"
+                                            itemLabel="#{item.descricao}" itemValue="#{item}">
+                                #{item.descricao}
+                            </p:autoComplete>
+                            <p:commandButton value="Adicionar" action="#{leilaoController.addBem}" update="tblBens" />
+                        </h:panelGrid>
+                        <p:dataTable id="tblBens" value="#{leilaoController.entidade.bensLeiloados}"
+                                     var="item" paginator="true" lazy="true">
+                            <p:column headerText="Descrição" sortBy="#{item.descricao}">
+                                #{item.descricao}
+                            </p:column>
+
+                            <p:column headerText="Conta" sortBy="#{item.conta}">
+                                #{item.conta}
+                            </p:column>
+
+                            <p:column>
+                                <p:commandButton value="Editar">
+                                    <f:setPropertyActionListener target="#{leilaoController}" value="#{item}" />
+                                </p:commandButton>
+                            </p:column>
+                            <p:column>
+                                <p:commandButton value="Remover" action="#{leilaoController.removeBem}" >
+                                    <f:setPropertyActionListener target="#{leilaoController.bem}" value="#{item}"/>
+
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab>                              
+                </p:tabView>        
+
                 (*) Campos de Preenchimento Obrigatório
                 <br/><br/>
                 <p:panel id="Rodape">

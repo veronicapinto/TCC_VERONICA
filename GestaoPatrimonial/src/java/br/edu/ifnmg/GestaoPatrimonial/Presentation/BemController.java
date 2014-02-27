@@ -67,6 +67,12 @@ public class BemController implements Serializable {
         listagemUnidades = Unidade.values();
         listagemEstadosC = EstadoConservacao.values();
     }
+    
+    public List<BemPatrimonial> autoCompletar(String nome){
+        BemPatrimonial tmp = new BemPatrimonial();
+        tmp.setDescricao(nome);
+        return dao.Buscar(tmp);
+    }
 
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();

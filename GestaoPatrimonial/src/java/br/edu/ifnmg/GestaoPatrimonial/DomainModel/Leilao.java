@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Leilao implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer numeroLeilao;
-    @OneToMany(mappedBy = "leilao")
+    @OneToMany(mappedBy = "leilao", fetch= FetchType.LAZY)
     private List<BemPatrimonial> bensLeiloados;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataLeilao;

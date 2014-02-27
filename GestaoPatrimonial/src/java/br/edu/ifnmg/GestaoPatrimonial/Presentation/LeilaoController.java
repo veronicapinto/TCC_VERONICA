@@ -139,16 +139,25 @@ public class LeilaoController implements Serializable {
         this.dao = dao;
     }
 
+    public BemPatrimonial getBem() {
+        return bem;
+    }
+
+    public void setBem(BemPatrimonial bem) {
+        this.bem = bem;
+    }
+    
+    
     //
     public void addBem() {
         entidade.add(bem);
-        salvarBem(bem);
+        salvar();
         bem = new BemPatrimonial();
 
     }
     public void removeBem(){
         entidade.remove(bem);
-        removeBem(bem);
+         removeBem();
         
         bem = new BemPatrimonial();
         
