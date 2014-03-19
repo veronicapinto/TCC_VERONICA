@@ -37,9 +37,7 @@ public class TipoFuncionario implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
-    
-    
+       
 
     @Override
     public int hashCode() {

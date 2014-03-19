@@ -61,10 +61,11 @@
                         
                     <h:outputLabel value="Data*:"/>
                     <p:calendar value="${bemController.entidade.data}" required="true" 
-                                label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>                    
-                </h:panelGrid>
+                    label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/> 
+                                    
+                    </h:panelGrid>
             </p:tab>
-                
+
             <p:tab   rendered="#{bemController.entidade.id > 0}" title="Baixa">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Motivo de Baixa:" />           

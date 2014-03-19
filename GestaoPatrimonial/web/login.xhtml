@@ -12,31 +12,32 @@
     </h:head>
 
     <h:body>
-      
+
         <div id="top">
             <img src="resources/img/ifnmg.png"/>
             <div id="textop" align="center">
                 <h3>Sistema de Gestão Patrimonial</h3>
             </div>
+            <div align="center">
+            <h:form>
+                <p:growl id="growl" showDetail="true" sticky="true" />   
+                <p:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Autenticação  
+                    </f:facet> 
+                    <h:outputLabel value="Login*" />
+                    <p:inputText value="#{autenticacaoController.login}" required="true" size="30"/>  
+
+                    <h:outputLabel value="Senha*:" />
+                    <p:password label="senha" size="30" value="#{autenticacaoController.senha}" required="true" />
+
+                </p:panelGrid>
+                <p:panel id="Rodape">
+                    <p:commandButton value="Entrar" action="#{autenticacaoController.validar()}"/>
+                </p:panel>
+
+            </h:form>
+            </div>
         </div>
-        <h:form>
-            <p:growl id="growl" showDetail="true" sticky="true" />   
-
-
-            <p:panelGrid columns="2">  
-                <f:facet name="header">  
-                    Autenticação  
-                </f:facet> 
-                <h:outputLabel value="Login*" />
-                <p:inputText value="#{autenticacaoController.login}" required="true"/>  
-
-                <h:outputLabel value="Senha*:" />
-                <p:password label="senha" size="26" value="#{autenticacaoController.senha}" required="true" />
-
-            </p:panelGrid>
-            <p:panel id="Rodape">
-                <p:commandButton value="Entrar" action="#{autenticacaoController.validar()}"/>
-            </p:panel>
-        </h:form>
     </h:body>
 </html>
