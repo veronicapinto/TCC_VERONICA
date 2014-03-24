@@ -2,9 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConsolidacaoInventario" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ca652df4-02a4-4baf-afb1-f51e3cb408ba">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="41"/>
+	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
-		<![CDATA[select C.CONTA, C.DESCRICAO,  SUM (B.VALOR) valor, SUM (B.QUANTIDADE) quantidade
+		<![CDATA[select C.CONTA, C.DESCRICAO, SUM (B.VALOR) valor, SUM (B.QUANTIDADE) quantidade
 FROM CONTAPATRIMONIAL C JOIN BEMPATRIMONIAL B
 ON B.CONTA_ID = C.ID
 GROUP BY C.CONTA,C.DESCRICAO]]>
@@ -53,7 +53,7 @@ GROUP BY C.CONTA,C.DESCRICAO]]>
 			<staticText>
 				<reportElement uuid="2cb06950-3011-4596-bd1c-8e1c4dac6c7c" x="320" y="163" width="170" height="20"/>
 				<textElement/>
-				<text><![CDATA[                 Posição em 30/04/2013]]></text>
+				<text><![CDATA[                 Posição em   /  /]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="d42fc3e1-2307-4653-88fe-79a6ac2fdaf4" x="0" y="246" width="425" height="20"/>
