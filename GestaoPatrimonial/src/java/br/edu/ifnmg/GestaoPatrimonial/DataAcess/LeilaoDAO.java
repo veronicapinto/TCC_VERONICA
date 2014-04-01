@@ -79,6 +79,15 @@ public class LeilaoDAO
                 filtro += " b.valorBemLeiloado=:valorBemLeiloado";
                 parametros.put("valorBemLeiloado", obj.getValorTotal());
             }
+            
+            
+              if (obj.getObservacoes() != null && obj.getObservacoes().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro += filtro + " and ";
+                }
+                filtro += " l.observacoes=:observacoes ";
+                parametros.put("observacoes", obj.getObservacoes());
+            }
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {

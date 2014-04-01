@@ -24,6 +24,7 @@
 
                     <h:outputLabel value="Tipo:" />
                     <p:selectOneMenu value="#{funcionarioController.filtro.tipo}" converter="${tipoFuncionarioConverter}">
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="#{funcionarioController.listagemTipos}" />
                     </p:selectOneMenu>
                     

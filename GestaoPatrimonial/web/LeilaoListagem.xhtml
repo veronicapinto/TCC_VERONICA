@@ -43,6 +43,10 @@ and open the template in the editor.
                 </h:outputText>
             </p:column>
 
+            <p:column sortBy="observacoes" headerText="Observações">
+                        ${item.observacoes}
+            </p:column>          
+
             <p:column headerText="Editar">
                 <p:commandButton value="Editar" ajax="false" action="${leilaoController.editar()}">
                     <f:setPropertyActionListener target="${leilaoController.entidade}" value="${item}"/>

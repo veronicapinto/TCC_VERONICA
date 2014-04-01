@@ -16,9 +16,16 @@
                         
                     <h:outputLabel value="Conta*:" />           
                     <p:selectOneMenu value="${bemController.entidade.conta}" required="true" converter="${contaPatrimonialConverter}">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemcontas}" />
                     </p:selectOneMenu>
-                        
+                  
+                      <h:outputLabel value="Estado de Conservação*:" />           
+                    <p:selectOneMenu value="${bemController.entidade.estadoCons}" required="true" converter="${estadoCConverter}">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
+                        <f:selectItems value="${bemController.listagemEstadosC}" />
+                    </p:selectOneMenu>
+                      
                     <h:outputLabel value="Valor*:" />
                     <p:inputText value="${bemController.entidade.valor}" required="true"/>
                         
@@ -27,16 +34,14 @@
                         
                     <h:outputLabel value="Unidade*:" />           
                     <p:selectOneMenu value="${bemController.entidade.unidade}" required="true" converter="${unidadeConverter}">
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemUnidades}" />
                     </p:selectOneMenu>
                         
-                    <h:outputLabel value="Estado de Conservação*:" />           
-                    <p:selectOneMenu value="${bemController.entidade.estadoCons}" required="true" converter="${estadoCConverter}">
-                        <f:selectItems value="${bemController.listagemEstadosC}" />
-                    </p:selectOneMenu>
-                        
+                                          
                     <h:outputLabel value="Local*:" />           
                     <p:selectOneMenu value="${bemController.entidade.local}" required="true" converter="${localConverter}">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemlocais}" />
                     </p:selectOneMenu>      
                         
@@ -47,11 +52,13 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Tipo de Aquisição*:" />           
                     <p:selectOneMenu value="${bemController.entidade.tipo}" required="true" converter="${tipoAquisicaoConverter}">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemTipoAq}" />
                     </p:selectOneMenu>
                         
                     <h:outputLabel value="Funcionário*:" />           
                     <p:selectOneMenu value="${bemController.entidade.funcionario}" required="true" converter="${funcionarioConverter}">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemfuncionarios}" />
                     </p:selectOneMenu>    
                         
@@ -70,17 +77,20 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Motivo de Baixa:" />           
                     <p:selectOneMenu value="${bemController.entidade.motivo}" converter="${MotivoBaixaConverter}">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemMotivos}" />
                         <p:ajax process="@all" render="labelLeilao selectLeilao" />
                     </p:selectOneMenu>
 
                     <h:outputLabel value="Funcionário:" />           
                     <p:selectOneMenu value="${bemController.entidade.funcionarioBaixa}" converter="${funcionarioConverter}">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemfuncionarios}" />
                     </p:selectOneMenu>  
                     
                     <h:outputLabel id="labelLeilao" rendered="#{bemController.entidade.motivo == 'Leilao'}" value="Número do Leilão:" />           
                     <p:selectOneMenu  id="selectLeilao" rendered="#{bemController.entidade.motivo == 'Leilao'}" value="${bemController.entidade.leilao}" converter="${leilaoConverter}">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemBensLeiloados}" />
                     </p:selectOneMenu>  
 

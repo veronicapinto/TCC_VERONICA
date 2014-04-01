@@ -16,7 +16,8 @@
             <p:inputText value="${bemController.filtro.descricao}" />  
 
             <h:outputLabel value="Conta:" />
-            <p:selectOneMenu value="${bemController.filtro.conta}" converter="${contaPatrimonialConverter}">  
+            <p:selectOneMenu value="${bemController.filtro.conta}" converter="${contaPatrimonialConverter}"> 
+                 <f:selectItem itemLabel="Selecione" itemValue=""/>
                 <f:selectItems value="#{bemController.listagemcontas}" />
             </p:selectOneMenu>
             <f:facet name="footer">  

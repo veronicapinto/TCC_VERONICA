@@ -36,6 +36,7 @@ public class Leilao implements Serializable {
     private Date dataLeilao;
     private double valorTotal;
     private String arrematante;
+    private String observacoes;
 
        public void add(BemPatrimonial bem) {
         if (!bensLeiloados.contains(bem)) {
@@ -105,6 +106,15 @@ public class Leilao implements Serializable {
     public void setArrematante(String arrematante) {
         this.arrematante = arrematante;
     }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+    
 
     @Override
     public int hashCode() {

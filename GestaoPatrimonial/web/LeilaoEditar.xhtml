@@ -11,7 +11,7 @@
         <ui:composition template="./TemplateGeral.xhtml">
             <ui:define name="content">
                 <p:tabView>
-                    <p:tab title="DAdos Gerais">
+                    <p:tab title="Dados Gerais">
                         <h:panelGrid columns="2">
                             <h:outputLabel value="Número do Lelão*:" />
                             <p:inputText size="35" value="${leilaoController.entidade.numeroLeilao}" required="true" />                 
@@ -24,7 +24,11 @@
 
                             <h:outputLabel value="Data do Leilão*:"/>
                             <p:calendar value="${leilaoController.entidade.dataLeilao}" required="true" 
-                                        label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/>  
+                                        label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/> 
+                            
+                            <h:outputLabel value="Observações:"/>
+                            <p:inputTextarea  rows="10" cols="38" value="${leilaoController.entidade.observacoes}" required="false">
+                            </p:inputTextarea>            
                            
                         </h:panelGrid>
                     </p:tab>
