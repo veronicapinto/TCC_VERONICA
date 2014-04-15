@@ -46,7 +46,7 @@ public class AutenticacaoController
         usuario = dao.porLogin(login);
 
         if (usuario == null) {
-            Mensagem("Login ou senha não correspondem");
+            Mensagem("Login ou senha não correspondem!");
             return "login.xhtml";
         } else {
             if (senha.equals(usuario.getSenha())) {

@@ -51,7 +51,7 @@ public class FuncionarioController implements Serializable {
     public void salvar() {
         dao.Salvar(entidade);
         listagem = null;
-        exibirMensagem("Salvo com Sucesso!");
+        exibirMensagem("Operação realizada com Sucesso!");
 
     }
 

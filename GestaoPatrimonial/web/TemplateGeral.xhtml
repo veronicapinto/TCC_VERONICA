@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?> 
+<?xml version='1.0' encoding='ISO-8859-1'  ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -20,16 +20,16 @@
                 <h3>Sistema de Gestão Patrimonial</h3>
             </div>
         </div>
-        <h:form>
+        <h:form acceptcharset="ISO-8859-1"  lang ="pt_BR">
             <p:growl id="growl" showDetail="true" sticky="true" />   
             <p:menubar>
-                <p:menuitem value="Login" icon="ui-icon-key"  url="Login.xhtml"/>  
+                <p:menuitem value="Login" icon="ui-icon-key"  url="login.xhtml"/>  
                 <p:submenu label="Cadastros" icon="ui-icon-pencil">  
                     <p:menuitem value="Conta Patrimonial" url="ContaPatrimonialListagem.xhtml" />                    
                     <p:menuitem value="Funcionário" url="FuncionarioListagem.xhtml"  /> 
-                    <p:menuitem value="Tipo de Funcionário" url="TipoFuncionarioListagem.xhtml"  />  
-                    <p:menuitem value="Local do Bem" url="LocalListagem.xhtml" />
                     <p:menuitem value="Leilão" url="LeilaoListagem.xhtml"  />  
+                    <p:menuitem value="Local do Bem" url="LocalListagem.xhtml" />
+                    <p:menuitem value="Tipo de Funcionário" url="TipoFuncionarioListagem.xhtml"  />  
 
                 </p:submenu>
                 <p:menuitem value="Gerenciar Bens" url="BemListagem.xhtml"  icon="ui-icon-pencil"/> 
