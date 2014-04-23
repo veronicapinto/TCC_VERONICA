@@ -11,7 +11,7 @@
             
             <p:tab title="Dados Gerais">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="DescriÃ§Ã£o*:" />
+                    <h:outputLabel value="Descrição*:" />
                     <p:inputText size="35" value="${bemController.entidade.descricao}" required="true"/>                      
                         
                     <h:outputLabel value="Conta*:" />           
@@ -20,7 +20,7 @@
                         <f:selectItems value="${bemController.listagemcontas}" />
                     </p:selectOneMenu>
                   
-                      <h:outputLabel value="Estado de ConservaÃ§Ã£o*:" />           
+                      <h:outputLabel value="Estado de Conservação*:" />           
                     <p:selectOneMenu value="${bemController.entidade.estadoCons}" required="true" converter="${estadoCConverter}">
                          <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemEstadosC}" />
@@ -48,23 +48,23 @@
                 </h:panelGrid>
             </p:tab>
                 
-            <p:tab  title="AquisiÃ§Ã£o">
+            <p:tab  title="Aquisição">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Tipo de AquisiÃ§Ã£o*:" />           
+                    <h:outputLabel value="Tipo de Aquisição*:" />           
                     <p:selectOneMenu value="${bemController.entidade.tipo}" required="true" converter="${tipoAquisicaoConverter}">
                          <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemTipoAq}" />
                     </p:selectOneMenu>
                         
-                    <h:outputLabel value="FuncionÃ¡rio*:" />           
+                    <h:outputLabel value="Funcionário*:" />           
                     <p:selectOneMenu value="${bemController.entidade.funcionario}" required="true" converter="${funcionarioConverter}">
                          <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemfuncionarios}" />
                     </p:selectOneMenu>    
                         
-                    <h:outputLabel value="Data de AquisiÃ§Ã£o*:"/>
+                    <h:outputLabel value="Data de Aquisição*:"/>
                     <p:calendar value="${bemController.entidade.dataAquisicao}" required="true" 
-                    label="Data de AquisiÃ§Ã£o" pattern="dd/MM/yyyy" locale="pt_BR"/>
+                    label="Data de Aquisição" pattern="dd/MM/yyyy" locale="pt_BR"/>
                         
                     <h:outputLabel value="Data*:"/>
                     <p:calendar value="${bemController.entidade.data}" required="true" 
@@ -82,13 +82,13 @@
                         <p:ajax process="@all" render="labelLeilao selectLeilao" />
                     </p:selectOneMenu>
 
-                    <h:outputLabel value="FuncionÃ¡rio:" />           
+                    <h:outputLabel value="Funcionário:" />           
                     <p:selectOneMenu value="${bemController.entidade.funcionarioBaixa}" converter="${funcionarioConverter}">
                          <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemfuncionarios}" />
                     </p:selectOneMenu>  
                     
-                    <h:outputLabel id="labelLeilao" rendered="#{bemController.entidade.motivo == 'Leilao'}" value="NÃºmero do LeilÃ£o:" />           
+                    <h:outputLabel id="labelLeilao" rendered="#{bemController.entidade.motivo == 'Leilao'}" value="Número do Leilão:" />           
                     <p:selectOneMenu  id="selectLeilao" rendered="#{bemController.entidade.motivo == 'Leilao'}" value="${bemController.entidade.leilao}" converter="${leilaoConverter}">
                          <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="${bemController.listagemBensLeiloados}" />
@@ -102,19 +102,19 @@
             </p:tab>
         </p:tabView>                     
         
-        (*) Campos de Preenchimento ObrigatÃ³rio
+        (*) Campos de Preenchimento Obrigatório
         <p:panel id="Rodape">
             <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
             <p:commandButton rendered="#{bemController.entidade.id > 0}" value="Remover" onclick="msgRemover.show()"/>
             <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${bemController.voltar()}" />
         </p:panel>       
-        <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="ConfirmaÃ§Ã£o"
+        <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                          severity="alert" widgetVar="msgSalvar">
             <p:commandButton ajax="false" value="SIM" action="${bemController.salvar()}" />
             <p:commandButton ajax="false" value="NÃƒO" onclick="msgSalvar.hide()" />                    
         </p:confirmDialog>
 
-        <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="ConfirmaÃ§Ã£o"
+        <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                          severity="alert" widgetVar="msgRemover">
             <p:commandButton ajax="false" value="SIM" action="${bemController.apagar()}" />
             <p:commandButton ajax="false" value="NÃƒO" onclick="msgRemover.hide()" />

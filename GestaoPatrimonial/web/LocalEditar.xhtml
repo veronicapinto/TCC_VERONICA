@@ -13,7 +13,7 @@
             <ui:define name="content">
                 
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="DescriÃ§Ã£o*:" />
+                    <h:outputLabel value="Descrição*:" />
                     <p:inputText value="${localController.entidade.descricao}" required="true"/>
                         
                     <h:outputLabel value="Cidade:" />
@@ -52,24 +52,24 @@
                         <f:selectItem itemLabel="TO" itemValue="TO"/>
                     </p:selectOneMenu>
                         
-                    <h:outputLabel value="EndereÃ§o:" />                   
+                    <h:outputLabel value="Endereço:" />                   
                     <p:inputText value="${localController.entidade.endereco}" required="true" style="width: 300px"/>            
                 </h:panelGrid>
                 <br/>
-                (*) Campos de Preenchimento ObrigatÃ³rio
+                (*) Campos de Preenchimento Obrigatório
                 <br/><br/>
                 <p:panel id="Rodape">
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                     <p:commandButton value="Remover" rendered="#{localController.entidade.id > 0}" onclick="msgRemover.show()"/>
                     <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${localController.voltar()}" />
                 </p:panel>       
-                <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="ConfirmaÃ§Ã£o"
+                <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgSalvar">
                     <p:commandButton ajax="false" value="SIM" action="${localController.salvar()}" />
                     <p:commandButton ajax="false" value="NÃƒO" onclick="msgSalvar.hide()" />                    
                 </p:confirmDialog>
                     
-                <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="ConfirmaÃ§Ã£o"
+                <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgRemover">
                     <p:commandButton ajax="false" value="SIM" action="${localController.apagar()}" />
                     <p:commandButton ajax="false" value="NÃƒO" onclick="msgRemover.hide()" />

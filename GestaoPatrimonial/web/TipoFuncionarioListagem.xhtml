@@ -15,16 +15,16 @@
                     <f:facet name="header">
                         Filtros
                     </f:facet>                    
-                    <h:outputLabel value="DescriÃ§Ã£o:"/>
+                    <h:outputLabel value="Descrição:"/>
                     <p:inputText value="${tipoFuncionarioController.filtro.descricao}"/>
                     
                     <f:facet name="footer">
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${tipoFuncionarioController.filtrar()}" style="margin: 0"/>
-                        <p:commandButton ajax="false" value="Novo Tipo FuncionÃ¡rio" action="${tipoFuncionarioController.criar()}"/>
+                        <p:commandButton ajax="false" value="Novo Tipo Funcionário" action="${tipoFuncionarioController.criar()}"/>
                     </f:facet>
                 </p:panelGrid>
-                <p:dataTable value="${tipoFuncionarioController.listagem}" var="item" emptyMessage="Registros nÃ£o Encontrados!">
-                    <p:column sortBy="descricao" headerText="DescriÃ§Ã£o">
+                <p:dataTable value="${tipoFuncionarioController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+                    <p:column sortBy="descricao" headerText="Descrição">
                         ${item.descricao}
                     </p:column>
                     <p:column headerText="Editar">

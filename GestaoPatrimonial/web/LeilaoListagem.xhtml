@@ -15,17 +15,17 @@ and open the template in the editor.
             <f:facet name="header">
                 Filtros
             </f:facet>
-            <h:outputLabel value="NÃºmero do LeilÃ£o"/>
+            <h:outputLabel value="Número do Leilão"/>
             <p:inputText value="${leilaoController.filtro.numeroLeilao}" />
 
             <f:facet name="footer">
                 <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${leilaoController.filtrar()}" style="margin: 0"/>
-                <p:commandButton ajax="false" value="Novo LeilÃ£o " action="${leilaoController.criar()}"/>
+                <p:commandButton ajax="false" value="Novo Leilão " action="${leilaoController.criar()}"/>
             </f:facet>
         </p:panelGrid>
 
-        <p:dataTable value="${leilaoController.listagem}" var="item" emptyMessage="Registros nÃ£o Encontrados!">
-            <p:column sortBy="numero" headerText="NÃºmero do LeilÃ£o">
+        <p:dataTable value="${leilaoController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+            <p:column sortBy="numero" headerText="Número do Leilão">
                 ${item.numeroLeilao}
             </p:column>
 
@@ -37,13 +37,13 @@ and open the template in the editor.
                         ${item.valorTotal}
             </p:column>
 
-            <p:column sortBy="dataLeilao" headerText="Data do LeilÃ£o" >
+            <p:column sortBy="dataLeilao" headerText="Data do Leilão" >
                 <h:outputText value="${item.dataLeilao}">
                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
                 </h:outputText>
             </p:column>
 
-            <p:column sortBy="observacoes" headerText="ObservaÃ§Ãµes">
+            <p:column sortBy="observacoes" headerText="Observações">
                         ${item.observacoes}
             </p:column>          
 
