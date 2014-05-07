@@ -17,27 +17,27 @@
         <div id="top">
             <img src="resources/img/ifnmg.png"/>
             <div id="textop" align="center">
-                <h3>Sistema de Gestão Patrimonial</h3>
+                <h2 style="font: message-box">Sistema de Gestï¿½o Patrimonial</h2>
             </div>
         </div>
         <h:form acceptcharset="ISO-8859-1"  lang ="pt_BR">
             <p:growl id="growl" showDetail="true" sticky="true" />   
-            <p:menubar>
+            <p:menubar style="font: message-box; color: blue">
                 <p:menuitem value="Login" icon="ui-icon-key"  url="login.xhtml"/>  
                 <p:submenu label="Cadastros" icon="ui-icon-pencil">  
                     <p:menuitem value="Conta Patrimonial" url="ContaPatrimonialListagem.xhtml" />                    
-                    <p:menuitem value="Funcionário" url="FuncionarioListagem.xhtml"  /> 
-                    <p:menuitem value="Leilão" url="LeilaoListagem.xhtml"  />  
+                    <p:menuitem value="Funcionï¿½rio" url="FuncionarioListagem.xhtml"  /> 
+                    <p:menuitem value="Leilï¿½o" url="LeilaoListagem.xhtml"  />  
                     <p:menuitem value="Local do Bem" url="LocalListagem.xhtml" />
-                    <p:menuitem value="Tipo de Funcionário" url="TipoFuncionarioListagem.xhtml"  />  
+                    <p:menuitem value="Tipo de Funcionï¿½rio" url="TipoFuncionarioListagem.xhtml"  />  
 
                 </p:submenu>
                 <p:menuitem value="Gerenciar Bens" url="BemListagem.xhtml"  icon="ui-icon-pencil"/> 
 
 
-                               <p:submenu label="Relatórios" icon="ui-icon-note">
-                    <p:menuitem ajax="false" value="Consolidação de Inventário - PDF" actionListener="#{relatorioController.PDF(actionEvent)}" />
-                    <p:menuitem ajax="false" value="Consolidação de Inventário - XLS" actionListener="#{relatorioController.XLS(actionEvent)}" />
+                               <p:submenu label="Relatï¿½rios" icon="ui-icon-note">
+                    <p:menuitem ajax="false" value="Consolidaï¿½ï¿½o de Inventï¿½rio - PDF" actionListener="#{relatorioController.PDF(actionEvent)}" />
+                    <p:menuitem ajax="false" value="Consolidaï¿½ï¿½o de Inventï¿½rio - XLS" actionListener="#{relatorioController.XLS(actionEvent)}" />
                 </p:submenu>
                 
                
@@ -50,7 +50,8 @@
         </h:form>
 
         <div id="bottom">
-            <center>Desenvolvido por Verônica Pinto - Januária/MG </center>
+            <center>Desenvolvido por Verï¿½nica Pinto, <br/>
+                    &copy; 2014 GestÃ£o Patrimonial Escolar- Januï¿½ria/MG - Todos os direitos reservados </center>
         <br/>
             <center>Email: veronicatads@yahoo.com.br </center>
         </div>

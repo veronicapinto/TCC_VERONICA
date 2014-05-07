@@ -62,7 +62,7 @@ public class LocalController implements Serializable {
     public String apagar() {
         dao.Apagar(entidade);
         listagem = null;
-        exibirMensagem("Apagado com Sucesso");
+        exibirMensagem("Apagado com Sucesso!");
         return "LocalEditar.xhtml";
     }
 

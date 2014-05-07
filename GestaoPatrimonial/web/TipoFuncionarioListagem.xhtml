@@ -11,20 +11,23 @@
         <ui:composition template="./TemplateGeral.xhtml">
 
             <ui:define name="content">
+                <center>
                 <p:panelGrid columns="2">
                     <f:facet name="header">
                         Filtros
                     </f:facet>                    
-                    <h:outputLabel value="Descrição:"/>
+                    <h:outputLabel value="Descriï¿½ï¿½o:"/>
                     <p:inputText value="${tipoFuncionarioController.filtro.descricao}"/>
                     
                     <f:facet name="footer">
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${tipoFuncionarioController.filtrar()}" style="margin: 0"/>
-                        <p:commandButton ajax="false" value="Novo Tipo Funcionário" action="${tipoFuncionarioController.criar()}"/>
+                        <p:commandButton ajax="false" value="Novo Tipo Funcionï¿½rio" action="${tipoFuncionarioController.criar()}"/>
                     </f:facet>
                 </p:panelGrid>
-                <p:dataTable value="${tipoFuncionarioController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
-                    <p:column sortBy="descricao" headerText="Descrição">
+                </center>
+            <br/>
+                <p:dataTable value="${tipoFuncionarioController.listagem}" var="item" emptyMessage="Registros nï¿½o Encontrados!">
+                    <p:column sortBy="descricao" headerText="Descriï¿½ï¿½o">
                         ${item.descricao}
                     </p:column>
                     <p:column headerText="Editar">
