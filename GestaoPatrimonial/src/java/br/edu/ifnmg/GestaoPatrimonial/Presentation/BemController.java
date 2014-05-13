@@ -25,8 +25,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  *
@@ -68,7 +68,7 @@ public class BemController implements Serializable {
         listagemEstadosC = EstadoConservacao.values();
     }
     
-    public List<BemPatrimonial> autoCompletar(String nome){
+    public List<BemPatrimonial> autoCompletar(String nome) {
         BemPatrimonial tmp = new BemPatrimonial();
         tmp.setDescricao(nome);
         return dao.Buscar(tmp);
@@ -80,6 +80,14 @@ public class BemController implements Serializable {
     }
 
     public void salvar() {
+        if (entidade.getDataBaixa().before(entidade.getDataAquisicao())) {
+            exibirMensagem("Data de Baixa não pode ser menor que a Data de Aquisição!");
+            return;
+        }
+        if (entidade.getDescricao().trim().length() == 0) {
+            exibirMensagem("Valor Inválido, preencha o campo: DESCRIÇÃO com caracteres diferentes de espaço!");
+            return;
+        }
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");
@@ -236,6 +244,7 @@ public class BemController implements Serializable {
     public void setListagemTipoAq(TipoAquisicao[] listagemTipoAq) {
         this.listagemTipoAq = listagemTipoAq;
     }
+    
     
 }
 

@@ -45,7 +45,12 @@ public class ContaPatrimonialController implements Serializable {
     }
 
     public void salvar() {
-        dao.Salvar(entidade);
+        if(entidade.getDescricao().trim().length() == 0){
+           exibirMensagem("Valor Inválido, preencha o campo: DESCRIÇÃO com caracteres diferentes de espaço!");
+           return;
+        }
+        
+           dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");
     }

@@ -40,8 +40,7 @@ public class FuncionarioDAO
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " f.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " lower(f.nome) like lower('%" + obj.getNome() + "%')";                
             }
 
             if (obj.getLogin() != null && obj.getLogin().length() > 0) {

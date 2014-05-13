@@ -49,6 +49,19 @@ public class FuncionarioController implements Serializable {
     }
 
     public void salvar() {
+        if(entidade.getNome().trim().length() == 0){
+           exibirMensagem("Valor Inválido, preencha o campo: NOME com caracteres diferentes de espaço!");
+           return;
+        }
+         if(entidade.getLogin().trim().length() == 0){
+           exibirMensagem("Valor Inválido, preencha o campo: LOGIN com caracteres diferentes de espaço!");
+           return;
+        }
+          if(entidade.getSenha().trim().length() == 0){
+           exibirMensagem("Valor Inválido, preencha o campo: SENHA com caracteres diferentes de espaço!");
+           return;
+        }
+          
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");

@@ -44,6 +44,19 @@ public class LocalController implements Serializable {
     }
 
     public void salvar() {
+        if(entidade.getDescricao().trim().length() == 0){
+           exibirMensagem("Valor Inválido, preencha o campo: DESCRIÇÃO com caracteres diferentes de espaço!");
+           return;
+        }
+         if(entidade.getCidade().trim().length() == 0){
+           exibirMensagem("Valor Inválido, preencha o campo: CIDADE com caracteres diferentes de espaço!");
+           return;
+        }
+          if(entidade.getEndereco().trim().length() == 0){
+           exibirMensagem("Valor Inválido, preencha o campo: ENDEREÇO com caracteres diferentes de espaço!");
+           return;
+        }
+       
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");

@@ -15,21 +15,21 @@ and open the template in the editor.
             <f:facet name="header">
                 Filtros
             </f:facet>
-            <h:outputLabel value="Número do Leilão"/>
+            <h:outputLabel value="Nï¿½mero do Leilï¿½o"/>
             <p:inputText value="${leilaoController.filtro.numeroLeilao}" />
 
             <f:facet name="footer">
                 <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${leilaoController.filtrar()}" style="margin: 0"/>
-                <p:commandButton ajax="false" value="Novo Leilão " action="${leilaoController.criar()}"/>
+                <p:commandButton ajax="false" value="Novo Leilï¿½o " action="${leilaoController.criar()}"/>
             </f:facet>
         </p:panelGrid>
 
-        <p:dataTable value="${leilaoController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
-            <p:column sortBy="numero" headerText="Número do Leilão">
+        <p:dataTable value="${leilaoController.listagem}" var="item" emptyMessage="Registros nï¿½o Encontrados!">
+            <p:column sortBy="numero" headerText="Nï¿½mero do Leilï¿½o">
                 ${item.numeroLeilao}
             </p:column>
 
-            <p:column sortBy="arrematante" headerText="Arrematante">
+            <p:column sortBy="arrematante" headerText="InformaÃ§Ãµes sobre Arrematantes">
                 ${item.arrematante}
             </p:column>             
 
@@ -37,13 +37,13 @@ and open the template in the editor.
                         ${item.valorTotal}
             </p:column>
 
-            <p:column sortBy="dataLeilao" headerText="Data do Leilão" >
+            <p:column sortBy="dataLeilao" headerText="Data do Leilï¿½o" >
                 <h:outputText value="${item.dataLeilao}">
                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
                 </h:outputText>
             </p:column>
 
-            <p:column sortBy="observacoes" headerText="Observações">
+            <p:column sortBy="observacoes" headerText="Observaï¿½ï¿½es">
                         ${item.observacoes}
             </p:column>          
 

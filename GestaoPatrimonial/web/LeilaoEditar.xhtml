@@ -13,20 +13,20 @@
                 <p:tabView>
                     <p:tab title="Dados Gerais">
                         <h:panelGrid columns="2">
-                            <h:outputLabel value="Número do Leilão*:" />
+                            <h:outputLabel value="Nï¿½mero do Leilï¿½o*:" />
                             <p:inputText size="35" value="${leilaoController.entidade.numeroLeilao}" required="true" />                 
 
-                            <h:outputLabel value="Valor do Arremate*:" />
+                            <h:outputLabel value="Valor Total*:" />
                             <p:inputText size="35" value="${leilaoController.entidade.valorTotal}" required="true" />
 
-                            <h:outputLabel value="Nome do Arrematante*:" />
-                            <p:inputText size="35" value="${leilaoController.entidade.arrematante}" required="true" />
+                           <h:outputLabel value="InformaÃ§Ãµes sobre Arrematantes*:"/>
+                           <p:inputTextarea rows="10" cols="38" value="${leilaoController.entidade.arrematante}" required="true" />
 
-                            <h:outputLabel value="Data do Leilão*:"/>
+                            <h:outputLabel value="Data do Leilï¿½o*:"/>
                             <p:calendar value="${leilaoController.entidade.dataLeilao}" required="true" 
                                         label="Data" pattern="dd/MM/yyyy" locale="pt_BR"/> 
                             
-                            <h:outputLabel value="Observações:"/>
+                            <h:outputLabel value="Observaï¿½ï¿½es:"/>
                             <p:inputTextarea  rows="10" cols="38" value="${leilaoController.entidade.observacoes}" required="false">
                             </p:inputTextarea>            
                            
@@ -46,7 +46,7 @@
                         </h:panelGrid>
                         <p:dataTable id="tblBens" value="#{leilaoController.entidade.bensLeiloados}"
                                      var="item" >
-                            <p:column headerText="Descrição" sortBy="#{item.descricao}">
+                            <p:column headerText="Descriï¿½ï¿½o" sortBy="#{item.descricao}">
                                 #{item.descricao}
                             </p:column>
 
@@ -63,20 +63,20 @@
                     </p:tab>                              
                 </p:tabView>        
 
-                (*) Campos de Preenchimento Obrigatório
+                (*) Campos de Preenchimento Obrigatï¿½rio
                 <br/><br/>
                 <p:panel id="Rodape">
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                     <p:commandButton value="Remover" rendered="#{leilaoController.entidade.id > 0}" onclick="msgRemover.show()"/>
                     <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${leilaoController.voltar()}" />
                 </p:panel>       
-                <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmaï¿½ï¿½o"
                                  severity="alert" widgetVar="msgSalvar">
                     <p:commandButton ajax="false" value="SIM" action="${leilaoController.salvar()}" />
                     <p:commandButton ajax="false" value="NÃƒO" onclick="msgSalvar.hide()" />                    
                 </p:confirmDialog>
 
-                <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
+                <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmaï¿½ï¿½o"
                                  severity="alert" widgetVar="msgRemover">
                     <p:commandButton ajax="false" value="SIM" action="${leilaoController.apagar()}" />
                     <p:commandButton ajax="false" value="NÃƒO" onclick="msgRemover.hide()" />

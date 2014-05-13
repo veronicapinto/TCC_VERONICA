@@ -16,7 +16,7 @@
                     <h:outputLabel value="Descri��o*:" />
                     <p:inputText value="${localController.entidade.descricao}" required="true"/>
                         
-                    <h:outputLabel value="Cidade:" />
+                    <h:outputLabel value="Cidade*:" />
                     <p:inputText value="${localController.entidade.cidade}" required="true"/>
                         
                     Estado*:<br/>
@@ -52,8 +52,8 @@
                         <f:selectItem itemLabel="TO" itemValue="TO"/>
                     </p:selectOneMenu>
                         
-                    <h:outputLabel value="Endere�o:" />                   
-                    <p:inputText value="${localController.entidade.endereco}" required="false" style="width: 300px"/>            
+                    <h:outputLabel value="Endere�o*:" />                   
+                    <p:inputText value="${localController.entidade.endereco}" required="true" style="width: 300px"/>            
                 </h:panelGrid>
                 <br/>
                 (*) Campos de Preenchimento Obrigat�rio
