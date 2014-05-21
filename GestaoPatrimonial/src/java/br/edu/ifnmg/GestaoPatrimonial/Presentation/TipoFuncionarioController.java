@@ -61,7 +61,7 @@ public class TipoFuncionarioController implements Serializable {
            exibirMensagem("Valor Inválido, preencha o campo: DESCRIÇÃO com caracteres diferentes de espaço!");
            return;
         }
-        dao.Salvar(entidade);
+        entidade = dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");
     }

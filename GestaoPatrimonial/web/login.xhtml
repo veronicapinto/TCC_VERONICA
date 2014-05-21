@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -8,35 +9,33 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
         <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
         <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
-        <title>Sistema de GestÃ£o Patrimonial</title>
+        <title>Sistema de Gestão Patrimonial</title>
     </h:head>
 
     <h:body>
 
         <div id="top">
-            <img src="resources/img/ifnmg.png"/>
+            <img src="resources/img/ifnmg.png" align="center" />
             <div id="textop" align="center">
-                <h2>Sistema de GestÃ£o Patrimonial</h2>
+                <h2>Sistema de Gestão Patrimonial</h2>
             </div>
             <div align="center">
             <h:form>
                 <p:growl id="growl" showDetail="true" sticky="true" />   
                 <p:panelGrid columns="2">  
                     <f:facet name="header">  
-                        AutenticaÃ§Ã£o
+                        Autenticação
                     </f:facet> 
-                    <h:outputLabel value="UsuÃ¡rio*" />
+                    <h:outputLabel value="Usuário*" />
                     <p:inputText value="#{autenticacaoController.login}" required="true" size="30"/>  
 
                     <h:outputLabel value="Senha*:" />
                     <p:password label="senha" size="30" value="#{autenticacaoController.senha}" required="true" />
-
                 </p:panelGrid>
                 <p:panel id="Rodape">
                     <p:commandButton value="Entrar" ajax="false" action="#{autenticacaoController.validar()}"/> <br/>
-                    
-               </p:panel>
-               
+                    </p:panel>
+
             </h:form>
             </div>
         </div>

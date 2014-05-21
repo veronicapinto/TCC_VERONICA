@@ -16,7 +16,7 @@
                         Filtros  
                     </f:facet>  
                     
-                     <h:outputLabel value="Descrição:" />                    
+                     <h:outputLabel value="Descriï¿½ï¿½o:" />                    
                      <p:inputText value="${localController.filtro.descricao}" />
                      
                     <h:outputLabel value="Cidade:" />
@@ -26,8 +26,8 @@
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${localController.filtrar()}" style="margin:0"/>  
                         <p:commandButton ajax="false" value="Novo Local" action="LocalEditar.xhtml" />
                     </f:facet>
-                </p:panelGrid> <p:dataTable value="${localController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
-                    <p:column sortBy="descricao" headerText="Descrição">
+                </p:panelGrid> <p:dataTable value="${localController.listagem}" var="item" emptyMessage="Registros nï¿½o Encontrados!">
+                    <p:column sortBy="descricao" headerText="Descriï¿½ï¿½o">
                         ${item.descricao}
                     </p:column>
                     <p:column sortBy="estado" headerText="Estado ">
@@ -36,7 +36,7 @@
                     <p:column sortBy="cidade" headerText="Cidade ">
                         ${item.cidade}
                     </p:column>
-                    <p:column sortBy="endereco" headerText="Endereço ">
+                    <p:column sortBy="endereco" headerText="Endereï¿½o ">
                         ${item.endereco}
                     </p:column>
                     <p:column headerText="Editar">

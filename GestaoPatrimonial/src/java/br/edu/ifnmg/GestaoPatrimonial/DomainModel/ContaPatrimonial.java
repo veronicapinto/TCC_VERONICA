@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @author veronica
  */
 @Entity
-public class ContaPatrimonial implements Serializable {
+public class ContaPatrimonial implements Entidade, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

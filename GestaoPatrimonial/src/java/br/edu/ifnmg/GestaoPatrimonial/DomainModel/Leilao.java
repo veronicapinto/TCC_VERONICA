@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
  * @author veronica
  */
 @Entity
-public class Leilao implements Serializable {
+public class Leilao implements Entidade, Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

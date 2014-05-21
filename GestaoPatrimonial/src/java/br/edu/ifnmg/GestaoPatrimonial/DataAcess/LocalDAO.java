@@ -43,11 +43,6 @@ public class LocalDAO
 
 
         if (obj != null) {
-            if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
-                filtro += " l.descricao =:descricao ";
-                parametros.put("descricao", obj.getDescricao());
-            }
-
 
             if (obj.getCidade() != null && obj.getCidade().length() > 0) {
                 if (filtro.length() > 0) {
@@ -55,6 +50,12 @@ public class LocalDAO
                 }
                 filtro += " l.cidade=:cidade ";
                 parametros.put("cidade", obj.getCidade());
+            }
+            if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " lower(l.descricao) like lower('%" + obj.getDescricao() + "%')";
             }
 
             if (obj.getId() != null && obj.getId() > 0) {

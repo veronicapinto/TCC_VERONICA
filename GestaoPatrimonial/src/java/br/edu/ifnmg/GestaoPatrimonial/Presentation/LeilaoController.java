@@ -57,7 +57,7 @@ public class LeilaoController implements Serializable {
            exibirMensagem("Valor Inválido, preencha o campo: DADOS DOS ARREMATANTES com caracteres diferentes de espaço!");
            return;
         }
-        dao.Salvar(entidade);
+        entidade = dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");
 

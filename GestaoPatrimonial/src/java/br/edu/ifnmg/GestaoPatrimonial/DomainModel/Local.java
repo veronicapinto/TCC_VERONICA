@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @author veronica
  */
 @Entity
-public class Local implements Serializable {
+public class Local implements Entidade, Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

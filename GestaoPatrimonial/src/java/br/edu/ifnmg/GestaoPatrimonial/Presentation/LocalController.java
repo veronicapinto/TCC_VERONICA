@@ -57,7 +57,7 @@ public class LocalController implements Serializable {
            return;
         }
        
-        dao.Salvar(entidade);
+        entidade = dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");
     }

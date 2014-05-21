@@ -46,10 +46,9 @@ public class BemPatrimonialDAO
 
         if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
             if (filtro.length() > 0) {
-                filtro = filtro + " and ";
-            }
-            filtro += " b.descricao=:descricao ";
-            parametros.put("descricao", obj.getDescricao());
+                    filtro = filtro + " and ";
+                }
+             filtro += " lower(b.descricao) like lower('%" + obj.getDescricao() + "%')";
         }
 
 

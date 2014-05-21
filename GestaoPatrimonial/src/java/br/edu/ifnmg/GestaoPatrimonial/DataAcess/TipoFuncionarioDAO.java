@@ -43,11 +43,7 @@ public class TipoFuncionarioDAO
             }
 
             if (obj.getDescricao() != null && obj.getDescricao().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + "and";
-                }
-                filtro += "tf.descricao=:descricao";
-                parametros.put("descricao", obj.getDescricao());
+               filtro += " lower(tf.descricao) like lower('%" + obj.getDescricao() + "%')";
             }
 
 

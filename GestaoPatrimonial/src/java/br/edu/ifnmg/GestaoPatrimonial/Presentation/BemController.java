@@ -44,11 +44,11 @@ public class BemController implements Serializable {
     List<Local> listagemlocais;
     List<Leilao> listagemBensLeiloados;
     Unidade[] listagemUnidades;
-    MotivoBaixa [] listagemMotivos;
+    MotivoBaixa[] listagemMotivos;
     EstadoConservacao[] listagemEstadosC;
     TipoAquisicao[] listagemTipoAq;
     @EJB
-    ILeilaoRepositorio daoLeilao;    
+    ILeilaoRepositorio daoLeilao;
     @EJB
     IBemPatrimonialRepositorio dao;
     @EJB
@@ -67,7 +67,7 @@ public class BemController implements Serializable {
         listagemUnidades = Unidade.values();
         listagemEstadosC = EstadoConservacao.values();
     }
-    
+
     public List<BemPatrimonial> autoCompletar(String nome) {
         BemPatrimonial tmp = new BemPatrimonial();
         tmp.setDescricao(nome);
@@ -80,15 +80,17 @@ public class BemController implements Serializable {
     }
 
     public void salvar() {
-        if (entidade.getDataBaixa().before(entidade.getDataAquisicao())) {
-            exibirMensagem("Data de Baixa não pode ser menor que a Data de Aquisição!");
-            return;
+        if (entidade.getDataBaixa() != null) {
+            if (entidade.getDataBaixa().before(entidade.getDataAquisicao())) {
+                exibirMensagem("Data de Baixa não pode ser menor que a Data de Aquisição!");
+                return;
+            }
         }
         if (entidade.getDescricao().trim().length() == 0) {
             exibirMensagem("Valor Inválido, preencha o campo: DESCRIÇÃO com caracteres diferentes de espaço!");
             return;
         }
-        dao.Salvar(entidade);
+        entidade = dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");
 
@@ -187,7 +189,7 @@ public class BemController implements Serializable {
     }
 
     public List<Leilao> getListagemBensLeiloados() {
-        if(listagemBensLeiloados == null) {
+        if (listagemBensLeiloados == null) {
             BemPatrimonial filtro = new BemPatrimonial();
             listagemBensLeiloados = daoLeilao.Buscar(null);
         }
@@ -197,8 +199,6 @@ public class BemController implements Serializable {
     public void setListagemBensLeiloados(List<Leilao> listagemBensLeiloados) {
         this.listagemBensLeiloados = listagemBensLeiloados;
     }
-    
-    
 
     //GET e SET das enumerações...
     public Unidade[] getListagemUnidades() {
@@ -211,9 +211,9 @@ public class BemController implements Serializable {
     public void setListagemUnidades(Unidade[] listagemUnidades) {
         this.listagemUnidades = listagemUnidades;
     }
-  
+
     public MotivoBaixa[] getListagemMotivos() {
-        if (listagemMotivos == null){
+        if (listagemMotivos == null) {
             listagemMotivos = MotivoBaixa.values();
         }
         return listagemMotivos;
@@ -221,8 +221,8 @@ public class BemController implements Serializable {
 
     public void setListagemMotivos(MotivoBaixa[] listagemMotivos) {
         this.listagemMotivos = listagemMotivos;
-    }    
-  
+    }
+
     public EstadoConservacao[] getListagemEstadosC() {
         if (listagemEstadosC == null) {
             listagemEstadosC = EstadoConservacao.values();
@@ -244,9 +244,4 @@ public class BemController implements Serializable {
     public void setListagemTipoAq(TipoAquisicao[] listagemTipoAq) {
         this.listagemTipoAq = listagemTipoAq;
     }
-    
-    
 }
-
-
-

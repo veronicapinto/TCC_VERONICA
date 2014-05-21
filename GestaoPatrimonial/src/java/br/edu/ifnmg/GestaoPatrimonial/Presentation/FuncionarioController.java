@@ -62,13 +62,17 @@ public class FuncionarioController implements Serializable {
            return;
         }
           
-        dao.Salvar(entidade);
+        entidade = dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Operação realizada com Sucesso!");
 
     }
 
     public String editar() {
+        return "FuncionarioEditar.xhtml";
+    }
+    
+    public String novo(){
         return "FuncionarioEditar.xhtml";
     }
 
@@ -93,8 +97,8 @@ public class FuncionarioController implements Serializable {
         listagem = null;
         return "FuncionarioListagem.xhtml";
     }
-
-    public Funcionario getEntidade() {
+    
+   public Funcionario getEntidade() {
         return entidade;
     }
 

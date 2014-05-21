@@ -46,9 +46,7 @@ public class ContaPatrimonialDAO
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += "c.descricao=:descricao";
-                parametros.put("descricao", obj.getDescricao());
-
+                 filtro += " lower(c.descricao) like lower('%" + obj.getDescricao() + "%')";
             }
             if (obj.getId() != null && obj.getId() > 0) {
                 if (filtro.length() > 0) {
