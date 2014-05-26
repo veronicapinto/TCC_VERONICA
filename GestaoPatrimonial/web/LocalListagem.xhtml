@@ -11,6 +11,7 @@
         <ui:composition template="./TemplateGeral.xhtml">
 
             <ui:define name="content">
+                <center>
                 <p:panelGrid columns="2">  
                     <f:facet name="header">  
                         Filtros  
@@ -26,7 +27,11 @@
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${localController.filtrar()}" style="margin:0"/>  
                         <p:commandButton ajax="false" value="Novo Local" action="LocalEditar.xhtml" />
                     </f:facet>
-                </p:panelGrid> <p:dataTable value="${localController.listagem}" var="item" emptyMessage="Registros n�o Encontrados!">
+                </p:panelGrid> 
+                </center>
+                <br/>
+                <p:dataTable value="${localController.listagem}" var="item" emptyMessage="Registros n�o Encontrados!">
+
                     <p:column sortBy="descricao" headerText="Descri��o">
                         ${item.descricao}
                     </p:column>

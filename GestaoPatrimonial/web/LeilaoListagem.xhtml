@@ -11,19 +11,21 @@ and open the template in the editor.
                 xmlns:p="http://primefaces.org/ui">
     
     <ui:define name="content">
-        <p:panelGrid columns="2">
-            <f:facet name="header">
-                Filtros
-            </f:facet>
-            <h:outputLabel value="N�mero do Leil�o"/>
-            <p:inputText value="${leilaoController.filtro.numeroLeilao}" />
+        <center>
+            <p:panelGrid columns="2">           
+                <f:facet name="header">
+                    Filtros
+                </f:facet>
+                <h:outputLabel value="N�mero do Leil�o"/>
+                <p:inputText value="${leilaoController.filtro.numeroLeilao}" />
 
-            <f:facet name="footer">
-                <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${leilaoController.filtrar()}" style="margin: 0"/>
-                <p:commandButton ajax="false" value="Novo Leil�o " action="${leilaoController.criar()}"/>
-            </f:facet>
-        </p:panelGrid>
-
+                <f:facet name="footer">
+                    <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${leilaoController.filtrar()}" style="margin: 0"/>
+                    <p:commandButton ajax="false" value="Novo Leil�o " action="${leilaoController.criar()}"/>
+                </f:facet>
+            </p:panelGrid>
+            </center> <br/>
+          
         <p:dataTable value="${leilaoController.listagem}" var="item" emptyMessage="Registros n�o Encontrados!">
             <p:column sortBy="numero" headerText="N�mero do Leil�o">
                 ${item.numeroLeilao}

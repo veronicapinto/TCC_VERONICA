@@ -34,9 +34,12 @@
                 </p:panelGrid>
                 <p:panel id="Rodape">
                     <p:commandButton value="Entrar" ajax="false" action="#{autenticacaoController.validar()}"/> <br/>
-                    </p:panel>
+                </p:panel>
+                <p:commandLink value="Novo Usuario" ajax="false" immediate="true" action="${funcionarioController.criar()}">
+                </p:commandLink>
 
             </h:form>
+
             </div>
         </div>
     </h:body>

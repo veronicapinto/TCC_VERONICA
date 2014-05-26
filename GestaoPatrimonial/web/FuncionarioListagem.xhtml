@@ -11,6 +11,7 @@
         <ui:composition template="./TemplateGeral.xhtml">
 
             <ui:define name="content">
+                <center>
                 <p:panelGrid columns="2">  
                     <f:facet name="header">  
                         Filtros  
@@ -30,10 +31,12 @@
                     
                     <f:facet name="footer">  
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${funcionarioController.filtrar()}" style="margin:0"/>  
-                        <p:commandButton ajax="false" value="Novo Funcionário" action="${funcionarioController.criar()}" />
+                        <p:commandButton ajax="false" value="Novo Funcionï¿½rio" action="${funcionarioController.criar()}" />
                     </f:facet>  
                 </p:panelGrid>
-                <p:dataTable value="${funcionarioController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+                </center>
+                <br/>
+                <p:dataTable value="${funcionarioController.listagem}" var="item" emptyMessage="Registros nï¿½o Encontrados!">
                     <p:column sortBy="nome" headerText="Nome">
                         ${item.nome}
                     </p:column>
