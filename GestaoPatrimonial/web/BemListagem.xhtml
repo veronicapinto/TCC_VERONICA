@@ -12,7 +12,7 @@
                 Filtros  
             </f:facet>  
 
-            <h:outputLabel value="Descriï¿½ï¿½o:" />
+            <h:outputLabel value="Descrição:" />
             <p:inputText value="${bemController.filtro.descricao}" />  
 
             <h:outputLabel value="Conta:" />
@@ -26,8 +26,8 @@
             </f:facet>  
         </p:panelGrid>
 
-        <p:dataTable value="${bemController.listagem}" var="item" emptyMessage="Registros nï¿½o Encontrados!">
-            <p:column sortBy="descricao" headerText="Descriï¿½ï¿½o">
+        <p:dataTable value="${bemController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+            <p:column sortBy="descricao" headerText="Descrição">
                 ${item.descricao}
             </p:column>
 
@@ -47,7 +47,7 @@
                 ${item.unidade}
             </p:column>
 
-            <p:column sortBy="estadoConservacao" headerText="Estado de Conservaï¿½ï¿½o">
+            <p:column sortBy="estadoConservacao" headerText="Estado de Conservação">
                 ${item.estadoCons}
             </p:column>
 
@@ -55,15 +55,15 @@
                 ${item.local}
             </p:column>
 
-            <p:column sortBy="funcionario" headerText="Funcionï¿½rio">
+            <p:column sortBy="funcionario" headerText="Funcionário">
                 ${item.funcionario}
             </p:column>
 
-            <p:column sortBy="tipoAq" headerText="Tipo de Aquisiï¿½ï¿½o">
+            <p:column sortBy="tipoAq" headerText="Tipo de Aquisição">
                 ${item.tipo}
             </p:column>
 
-            <p:column sortBy="dataAq" headerText=" Data de Aquisiï¿½ï¿½o">
+            <p:column sortBy="dataAq" headerText=" Data de Aquisição">
                 <h:outputText value="${item.dataAquisicao}">
                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR" />
                 </h:outputText>

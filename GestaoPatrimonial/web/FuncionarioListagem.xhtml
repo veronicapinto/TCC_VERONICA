@@ -31,12 +31,12 @@
                     
                     <f:facet name="footer">  
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${funcionarioController.filtrar()}" style="margin:0"/>  
-                        <p:commandButton ajax="false" value="Novo Funcionï¿½rio" action="${funcionarioController.criar()}" />
+                        <p:commandButton ajax="false" value="Novo Funcionário" action="${funcionarioController.criar()}" />
                     </f:facet>  
                 </p:panelGrid>
                 </center>
                 <br/>
-                <p:dataTable value="${funcionarioController.listagem}" var="item" emptyMessage="Registros nï¿½o Encontrados!">
+                <p:dataTable value="${funcionarioController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
                     <p:column sortBy="nome" headerText="Nome">
                         ${item.nome}
                     </p:column>

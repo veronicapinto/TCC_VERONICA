@@ -17,7 +17,7 @@
                         Filtros  
                     </f:facet>  
                     
-                     <h:outputLabel value="Descriï¿½ï¿½o:" />                    
+                     <h:outputLabel value="Descrição:" />                    
                      <p:inputText value="${localController.filtro.descricao}" />
                      
                     <h:outputLabel value="Cidade:" />
@@ -30,9 +30,9 @@
                 </p:panelGrid> 
                 </center>
                 <br/>
-                <p:dataTable value="${localController.listagem}" var="item" emptyMessage="Registros nï¿½o Encontrados!">
+                <p:dataTable value="${localController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
 
-                    <p:column sortBy="descricao" headerText="Descriï¿½ï¿½o">
+                    <p:column sortBy="descricao" headerText="Descrição">
                         ${item.descricao}
                     </p:column>
                     <p:column sortBy="estado" headerText="Estado ">
@@ -41,7 +41,7 @@
                     <p:column sortBy="cidade" headerText="Cidade ">
                         ${item.cidade}
                     </p:column>
-                    <p:column sortBy="endereco" headerText="Endereï¿½o ">
+                    <p:column sortBy="endereco" headerText="Endereço ">
                         ${item.endereco}
                     </p:column>
                     <p:column headerText="Editar">

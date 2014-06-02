@@ -16,22 +16,22 @@ and open the template in the editor.
                 <f:facet name="header">
                     Filtros
                 </f:facet>
-                <h:outputLabel value="Nï¿½mero do Leilï¿½o"/>
+                <h:outputLabel value="Número do Leilão"/>
                 <p:inputText value="${leilaoController.filtro.numeroLeilao}" />
 
                 <f:facet name="footer">
                     <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${leilaoController.filtrar()}" style="margin: 0"/>
-                    <p:commandButton ajax="false" value="Novo Leilï¿½o " action="${leilaoController.criar()}"/>
+                    <p:commandButton ajax="false" value="Novo Leilão " action="${leilaoController.criar()}"/>
                 </f:facet>
             </p:panelGrid>
-            </center> <br/>
+            </center>
           
-        <p:dataTable value="${leilaoController.listagem}" var="item" emptyMessage="Registros nï¿½o Encontrados!">
-            <p:column sortBy="numero" headerText="Nï¿½mero do Leilï¿½o">
+        <p:dataTable value="${leilaoController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+            <p:column sortBy="numero" headerText="Número do Leilão">
                 ${item.numeroLeilao}
             </p:column>
 
-            <p:column sortBy="arrematante" headerText="InformaÃ§Ãµes sobre Arrematantes">
+            <p:column sortBy="arrematante" headerText="Informações sobre Arrematantes">
                 ${item.arrematante}
             </p:column>             
 
@@ -39,13 +39,13 @@ and open the template in the editor.
                         ${item.valorTotal}
             </p:column>
 
-            <p:column sortBy="dataLeilao" headerText="Data do Leilï¿½o" >
+            <p:column sortBy="dataLeilao" headerText="Data do Leilão" >
                 <h:outputText value="${item.dataLeilao}">
                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
                 </h:outputText>
             </p:column>
 
-            <p:column sortBy="observacoes" headerText="Observaï¿½ï¿½es">
+            <p:column sortBy="observacoes" headerText="Observações">
                         ${item.observacoes}
             </p:column>          
 
